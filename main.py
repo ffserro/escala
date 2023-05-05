@@ -273,7 +273,7 @@ if mes != 0:
     data = AgGrid(data,
                 gridOptions=gridOptions,
                 allow_unsafe_jscode=True,
-                update_mode=GridUpdateMode.MANUAL
+                update_mode=GridUpdateMode.SORTING_CHANGED
     )
 
     st.write(data['data'])
