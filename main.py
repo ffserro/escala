@@ -25,7 +25,7 @@ st.write(vermelha)
 teste = []
 
 for i in feriados:
-    if i > prm and i < ult:
+    if i >= prm and i <= ult:
         teste.append(i)
 st.write(teste)
 
