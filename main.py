@@ -2,7 +2,7 @@ import streamlit as st
 import calendar
 import holidays
 from datetime import datetime, date
-datetime.strftime('%d-%m-%Y %H:%M:%S')
+st.write(dir(date))
 
 ano = 2023
 
