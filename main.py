@@ -94,18 +94,8 @@ if mes != 0:
         )
 
     def check_color_day(year, month, day, weekday):
-        if date(year, month, day) in holidays.Brazil()['{}-01-01'.format(year): '{}-12-31'.format(year)]:
+        if date(year, month, day) in vermelha:
             return "red"
-
-        if weekday == 6:  # Sunday
-            return "red"
-        
-        if weekday == 5:  # Saturday
-            return "red"
-
-        if date(year, month, day) == licpag:
-            return "red"
-
         return "black"
 
 
