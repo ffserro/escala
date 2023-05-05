@@ -1,4 +1,4 @@
 streamlit
 holidays
-mplcal
 matplotlib
+mplcal
