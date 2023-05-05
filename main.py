@@ -43,7 +43,7 @@ from calendar_view.core.event import Event
 config = data.CalendarConfig(
     lang='pt-br',
     title='Escala de Serviço - {}'.format(meses[mes]),
-    dates='{} - {}'.format(prm, ult),
+    dates='2023-05-01 - 2023-05-31',
     show_year=True,
     mode='working_hours',
     legend=False,
