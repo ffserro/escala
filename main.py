@@ -15,7 +15,7 @@ ult = date(ano, mes, calendar.monthrange(ano,mes)[-1])
 feriados = holidays.Brazil()['{}-01-01'.format(ano): '{}-12-31'.format(ano)]
 
 def iterdates(date1, date2):
-    one_day = datetime.timedelta(days = 1)
+    one_day = timedelta(days = 1)
     current = date1
     while current < date2:
         yield current
