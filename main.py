@@ -105,7 +105,7 @@ def check_color_day(year, month, day, weekday):
 
 
 def month_calendar(ax, year, month, fill):
-    date = datetime.datetime(year, month, 1)
+    date = datetime(year, month, 1)
 
     weekday, num_days = monthrange(year, month)
 
