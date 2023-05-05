@@ -2,6 +2,8 @@ import streamlit as st
 import calendar
 import holidays
 from datetime import datetime, date, timedelta
+import matplotlib.pyplot as plt
+
 ano = 2023
 
 st.title('Escala de serviço')
@@ -36,28 +38,14 @@ preta.remove(licpag)
 
 vermelha.sort()
 
-from calendar_view.calendar import Calendar
-from calendar_view.core import data
-from calendar_view.core.event import Event
-
-config = data.CalendarConfig(
-    lang='pt-br',
-    title='Escala de Serviço - {}'.format(meses[mes]),
-    dates='2023-05-01 - 2023-05-31',
-    show_year=True,
-    mode='week',
-    legend=False,
-)
-events = [
-    Event('Planning', day='2023-05-23', start='11:00', end='13:00'),
-    Event('Demo', day='2023-05-27', start='15:00', end='16:00'),
-    Event('Retrospective', day='2023-05-27', start='17:00', end='18:00'),
-]
-
-data.validate_config(config)
-data.validate_events(events, config)
-
-calendar = Calendar.build(config)
-calendar.add_events(events)
-calendar.save("sprint_23.png")
-st.image("sprint_23.png")
+from mplcal import MplCalendar
+feb = MplCalendar(2017, 2) # 2017, February
+feb.add_event(1, '1st day of February')
+feb.add_event(5, '         1         2         3         4         5         6')
+feb.add_event(5, '123456789012345678901234567890123456789012345678901234567890')
+feb.add_event(18, 'OSLL Field Maintenance Day')
+feb.add_event(18, 'OSLL Umpire Mechanics Clinic')
+feb.add_event(20, 'Presidents day')
+feb.add_event(25, 'OSLL Opening Day')
+feb.add_event(28, 'T-Ball Angels vs Dirtbags at OSLL')
+feb.show()
