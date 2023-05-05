@@ -223,7 +223,7 @@ if mes != 0:
         df[df.Data==de.strftime('%d/%m/%y')]['Nome'], df[df.Data==para.strftime('%d/%m/%y')]['Nome'] = df[df.Data==para.strftime('%d/%m/%y')]['Nome'], df[df.Data==de.strftime('%d/%m/%y')]['Nome']
         motivos.append('Troca entre os dias {} e {}. Motivo: {}'.format(de.strftime('%d/%m/%y'), para.strftime('%d/%m/%y'), motivo))
 
-    st.dataframe(df)
+    df
 
     st.write(motivos)
 
