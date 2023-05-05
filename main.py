@@ -218,7 +218,7 @@ if mes != 0:
     
     troca = st.button('Troca')
 
-    if troca:
+    #if troca:
 
 
 
