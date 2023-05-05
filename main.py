@@ -212,9 +212,13 @@ if mes != 0:
     with st.container():
         col1, col2 = st.columns(2)
         with col1:
-            de = st.date_input()
+            de = st.date_input('De: ')
         with col2:
-            para = st.date_input()
+            para = st.date_input('Para: ')
+    
+    troca = st.button('Troca')
+
+    if troca:
 
 
 
