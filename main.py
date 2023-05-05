@@ -39,7 +39,7 @@ preta.remove(licpag)
 vermelha.sort()
 
 from mplcal import MplCalendar
-feb = MplCalendar(2023, 2) # 2017, February
+feb = MplCalendar(2017, 2) # 2017, February
 feb.add_event(1, '1st day of February')
 feb.add_event(5, '         1         2         3         4         5         6')
 feb.add_event(5, '123456789012345678901234567890123456789012345678901234567890')
