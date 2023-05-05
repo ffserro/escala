@@ -174,7 +174,7 @@ if mes != 0:
     tabela = workbook.active
 
     for i in range(calendar.monthrange(ano,mes)[-1]):
-        aux = date(ano, mes, i+1).weekday()
+        aux = date(ano, mes, i+1)
         tabela['A{}'.format(3+i)] = aux.strftime('%d/%m/%y')
         tabela['B{}'.format(3+1)] = aux.weekday()
 
