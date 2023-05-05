@@ -3,7 +3,7 @@ import calendar
 import holidays
 from datetime import datetime, date
 st.write(dir(date))
-
+date.strftime('%d/%m/%y')
 ano = 2023
 
 st.title('Escala de serviço')
