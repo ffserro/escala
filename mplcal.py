@@ -1,7 +1,7 @@
 import datetime
 from calendar import monthrange
 from datetime import date, timedelta
-import holidays
+from main import licpag, feriados
 
 
 import matplotlib
@@ -57,7 +57,7 @@ def fill_box(ax, i, j):
     )
 
 def check_color_day(year, month, day, weekday):
-    if date(year, month, day) in holidays.Brazil()['{}-01-01'.format(year): '{}-12-31'.format(year)]:
+    if date(year, month, day) in feriados:
         return "red"
 
     if weekday == 6:  # Sunday
