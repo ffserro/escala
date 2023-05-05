@@ -1,7 +1,7 @@
 import streamlit as st
 import calendar
 import holidays
-from datetime import datetime as dt
+from datetime import datetime, date
 
 ano = 2023
 
@@ -10,8 +10,8 @@ st.title('Escala de serviço')
 meses = ['-', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
 mes = meses.index(st.selectbox('Escolha o mês da escala a ser visualizada: ', meses))
 
-prm = dt.date(ano, mes, 1)
-ult = dt.date(ano, mes, calendar.monthrange(ano,mes)[-1])
+prm = date(ano, mes, 1)
+ult = date(ano, mes, calendar.monthrange(ano,mes)[-1])
 
 st.write(mes)
 
