@@ -184,8 +184,8 @@ if mes != 0:
         tabela['I{}'.format(3+i)] = div_serv[1+i]
 
     with st.container():
-    col1, col2 = st.columns(2)
-    with col1:
-        st.selectbox('Primeiro militar da escala preta', div_serv.values)
-    with col2:
-        st.selectbox('Primeiro militar da escala vermelha', div_serv.values)
+        col1, col2 = st.columns(2)
+        with col1:
+            st.selectbox('Primeiro militar da escala preta', div_serv.values)
+        with col2:
+            st.selectbox('Primeiro militar da escala vermelha', div_serv.values)
