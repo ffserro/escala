@@ -14,6 +14,6 @@ st.write(mes)
 
 feriados = holidays.Brazil()
 
-st.write(feriados['2023-01-01': '2023-04-30'])
+st.write(feriados['{}-01-01'.format(ano): '{}-12-31'.format(ano)])
 
 licpag = st.date_input('Qual é o dia da Licença Pagamento? ')
