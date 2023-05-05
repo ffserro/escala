@@ -183,7 +183,9 @@ if mes != 0:
     for i in range(len(div_serv)):
         tabela['I{}'.format(3+i)] = div_serv[1+i]
 
-    for i in range(30):
-        st.write(tabela['A{}'.format(3+i)].value, tabela['C{}'.format(3+i)].value)
-    for i in range(10):
-        st.write(tabela['I{}'.format(3+i)].value)
+    with st.container():
+    col1, col2 = st.columns(2)
+    with col1:
+        st.selectbox('Primeiro militar da escala preta', div_serv.values)
+    with col2:
+        st.selectbox('Primeiro militar da escala vermelha', div_serv.values)
