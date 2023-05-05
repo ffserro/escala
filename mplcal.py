@@ -120,22 +120,3 @@ def main(year, month, grid=False, fill=False):
             tick.label2.set_visible(False)
     month_calendar(ax, year, month, fill)
     st.pyplot(fig=fig)
-
-holiday_list = [
-    (1, 1),
-    (1, 10),
-    (2, 11),
-    (2, 23),
-    (3, 21),
-    (4, 29),
-    (5, 3),
-    (5, 4),
-    (5, 5),
-    (7, 18),
-    (8, 11),
-    (9, 19),
-    (9, 23),
-    (10, 10),
-    (11, 3),
-    (11, 23),
-]
