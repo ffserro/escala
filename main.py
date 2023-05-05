@@ -3,6 +3,7 @@ import calendar
 
 st.title('Escala de serviço')
 
-st.write(calendar.calendar)
+st.write(calendar.calendar(2023))
+
 
 
