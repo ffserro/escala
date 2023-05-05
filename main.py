@@ -202,10 +202,10 @@ if mes != 0:
     for i in range(calendar.monthrange(ano, mes)[-1]):
         if date(ano, mes, i+1) in vermelha:
             corrida.append(nm_ver[0])
-            nm_ver = nm_ver[1:] + nm_ver[0]
+            nm_ver = nm_ver[1:] + [nm_ver[0]]
         if date(ano, mes, i+1) in preta:
             corrida.append(nm_pre[0])
-            nm_pre = nm_pre[1:] + nm_pre[0]
+            nm_pre = nm_pre[1:] + [nm_pre[0]]
 
     st.write(corrida)
     st.write(nm_ver)
