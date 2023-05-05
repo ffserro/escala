@@ -12,6 +12,8 @@ mes = meses.index(st.selectbox('Escolha o mês da escala a ser visualizada: ', m
 prm = date(ano, mes, 1)
 ult = date(ano, mes, calendar.monthrange(ano,mes)[-1])
 
+vermelha = []
+
 feriados = holidays.Brazil()['{}-01-01'.format(ano): '{}-12-31'.format(ano)]
 
 def iterdates(date1, date2):
@@ -23,6 +25,8 @@ def iterdates(date1, date2):
 
 for d in iterdates(prm, ult):
     if d.weekday() in (5, 6):
-        print (d, d.weekday())
+        vermalha.append(d)
+
+st.write(vermelha)
 
 licpag = st.date_input('Qual é o dia da Licença Pagamento? ',value=prm, min_value=prm, max_value=ult)
