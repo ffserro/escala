@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 
 import pandas as pd 
 import numpy as np
-from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
+from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, JsCode
 
 from openpyxl import Workbook, load_workbook
 
