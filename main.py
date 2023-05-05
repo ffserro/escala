@@ -183,4 +183,6 @@ if mes != 0:
         tabela['I{}'.format(3+i)] = div_serv[3+i]
 
     for i in range(30):
-        st.write(tabela['A{}'.format(3+i)].value, tabela['B{}'.format(3+i)].value, tabela['I{}'.format(3+i)].value)
+        st.write(tabela['A{}'.format(3+i)].value, tabela['B{}'.format(3+i)].value)
+    for i in range(10):
+        st.write(tabela['I{}'.format(3+i)].value)
