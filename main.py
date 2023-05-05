@@ -9,6 +9,8 @@ import matplotlib
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
 
+from openpyxl import Workbook, load_workbook
+
 ano = 2023
 
 # Título e Prompts
@@ -167,3 +169,6 @@ if mes != 0:
                 10:'SO-MO Alvarez'}
     
     st.write(div_serv)
+
+    tabela = load_workbook(filename='modelo.xlsx')
+    st.write(tabela.sheetnames)

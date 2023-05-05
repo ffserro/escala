@@ -1,4 +1,4 @@
 streamlit
 holidays
 matplotlib
-mplcal @ git+https://github.com/meta4/mplcal
+openpyxl
