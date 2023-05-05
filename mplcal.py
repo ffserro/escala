@@ -1,7 +1,7 @@
 import datetime
 from calendar import monthrange
 from datetime import date, timedelta
-from main import licpag, feriados
+from main import feriados
 
 
 import matplotlib
