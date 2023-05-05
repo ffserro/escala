@@ -12,10 +12,8 @@ mes = meses.index(st.selectbox('Escolha o mês da escala a ser visualizada: ', m
 prm = date(ano, mes, 1)
 ult = date(ano, mes, calendar.monthrange(ano,mes)[-1])
 
-st.write(mes)
+feriados = holidays.Brazil()['{}-01-01'.format(ano): '{}-12-31'.format(ano)]
 
-feriados = holidays.Brazil()
-
-st.write(feriados['{}-01-01'.format(ano): '{}-12-31'.format(ano)])
+st.write(feriados)
 
 licpag = st.date_input('Qual é o dia da Licença Pagamento? ',value=prm, min_value=prm, max_value=ult)
