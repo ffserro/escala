@@ -41,9 +41,9 @@ from calendar_view.core import data
 from calendar_view.core.event import Event
 
 config = data.CalendarConfig(
-    lang='en',
-    title='Sprint 23',
-    dates='2019-09-23 - 2019-09-27',
+    lang='pt-br',
+    title='Escala de Serviço - {}'.format(meses[mes]),
+    dates='{} - {}'.format(prm, ult),
     show_year=True,
     mode='working_hours',
     legend=False,
