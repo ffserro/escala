@@ -126,7 +126,7 @@ if mes != 0:
             i = x_start + weekday * x_offset_rate
             color = check_color_day(year, month, day, weekday)
 
-            if fill:
+            if fill and color = "red":
                 fill_box(ax, i, j)
 
             label_day(ax, day, i, j, color)
@@ -159,4 +159,4 @@ if mes != 0:
         st.pyplot(fig=fig)
 
 
-    main(ano, mes, grid=True, fill=False)
+    main(ano, mes, grid=True, fill=True)
