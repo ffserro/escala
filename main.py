@@ -167,8 +167,6 @@ if mes != 0:
                 8:'SO-AM Anderson Santos',
                 9:'SO-EL Alfredo',
                 10:'SO-MO Alvarez'}
-    
-    st.write(div_serv)
 
     workbook = load_workbook(filename='modelo.xlsx')
     tabela = workbook.active
@@ -180,7 +178,7 @@ if mes != 0:
         tabela['B{}'.format(3+i)] = ['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'][date(ano, mes, i+1).weekday()]
 
     for i in range(len(div_serv)):
-        tabela['I{}'.format(3+i)] = div_serv[3+i]
+        tabela['I{}'.format(3+i)] = div_serv[1+i]
 
     for i in range(30):
         st.write(tabela['A{}'.format(3+i)].value, tabela['B{}'.format(3+i)].value)
