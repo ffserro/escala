@@ -13,6 +13,7 @@ prm = date(ano, mes, 1)
 ult = date(ano, mes, calendar.monthrange(ano,mes)[-1])
 
 vermelha = []
+preta = []
 
 feriados = holidays.Brazil()['{}-01-01'.format(ano): '{}-12-31'.format(ano)]
 
@@ -24,11 +25,17 @@ for i in feriados:
     if i >= prm and i <= ult:
         vermelha.append(i)
 
+for single_date in (prm + timedelta(n) for n in range(calendar.monthrange(ano,mes)[-1])):
+    if single_date not in vermelha:
+        preta.append(single_date)
+
 licpag = st.date_input('Qual é o dia da Licença Pagamento? ',value=prm, min_value=prm, max_value=ult)
 
 vermelha.append(licpag)
+preta.del[licpag]
 
 vermelha.sort()
 
 st.write(vermelha)
+st.write(preta)
 
