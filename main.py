@@ -209,4 +209,4 @@ if mes != 0:
 
     df = pd.DataFrame({'Data':[date(ano, mes, i+1).strftime('%d/%m/%y') for i in range(calendar.monthrange(ano, mes)[-1])], 'Dia':[['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'][date(ano, mes, i+1).weekday()] for i in range(calendar.monthrange(ano, mes)[-1])], 'Tab': [['P', 'V'][date(ano, mes, 1+i) in vermelha] for i in range(calendar.monthrange(ano, mes)[-1])], 'Nome': corrida})
 
-    df
+    AgGrid(df)
