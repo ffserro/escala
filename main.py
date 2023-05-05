@@ -177,4 +177,4 @@ if mes != 0:
         tabela['A{}'.format(3+i)] = date(ano, mes, i+1).strftime('%d/%m/%y')
         tabela['B{}'.format(3+1)] = date(ano, mes, i+1).weekday()
 
-    st.write(tabela['A3'], tabela['B3'])
+    st.write(tabela['A3'].value, tabela['B3'].value)
