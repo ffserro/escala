@@ -188,4 +188,4 @@ if mes != 0:
         with col1:
             st.selectbox('Primeiro militar da escala preta', div_serv.values())
         with col2:
-            st.selectbox('Primeiro militar da escala vermelha', div_serv.values())
+            st.selectbox('Primeiro militar da escala vermelha', reversed(div_serv.values()))
