@@ -180,7 +180,7 @@ if mes != 0:
     for i in range(calendar.monthrange(ano, mes)[-1]):
         if date(ano, mes, i+1) in vermelha:
             tabela['C{}'.format(3+i)] = 'V'
-        else:
+        elif date(ano, mes, i+1) in preta:
             tabela['C{}'.format(3+1)] = 'P'
 
     for i in range(len(div_serv)):
