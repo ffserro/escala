@@ -3,5 +3,6 @@ import calendar
 
 st.title('Escala de serviço')
 
-st.write(dir(calendar))
+st.write(calendar.calendar)
+
 
