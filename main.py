@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 
 ano = 2023
 
+# Título e Prompts
 st.title('Escala de serviço')
 
 meses = ['-', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
@@ -18,6 +19,7 @@ mes = meses.index(st.selectbox('Escolha o mês da escala a ser visualizada: ', m
 
 if mes != 0:
 
+    # Definições de data
     prm = date(ano, mes, 1)
     ult = date(ano, mes, calendar.monthrange(ano,mes)[-1])
 
@@ -45,6 +47,7 @@ if mes != 0:
 
     vermelha.sort()
 
+    # Calendário
     def label_month(year, month, ax, i, j, cl="black"):
         months = [
             "Jan",
@@ -160,3 +163,17 @@ if mes != 0:
 
 
     main(ano, mes, grid=True, fill=True)
+
+    # Divisão de serviço
+    div_serv = {1:'CT Cespes',
+                2:'CT Cassias',
+                3:'CT Garcez',
+                4:'CT Diogo',
+                5:'CT Giovanni',
+                6:'CT(QC-CA) Damasceno',
+                7:'1T(IM) Sêrro',
+                8:'SO-AM Anderson Santos',
+                9:'SO-EL Alfredo',
+                10:'SO-MO Alvarez'}
+    
+    st.write(div_serv)
