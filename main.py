@@ -45,7 +45,7 @@ config = data.CalendarConfig(
     title='Escala de Serviço - {}'.format(meses[mes]),
     dates='2023-05-01 - 2023-05-31',
     show_year=True,
-    mode='working_hours',
+    mode='week',
     legend=False,
 )
 events = [
