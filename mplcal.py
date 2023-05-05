@@ -1,6 +1,8 @@
 import datetime
 from calendar import monthrange
-from datetime import timedelta
+from datetime import date, timedelta
+import holidays
+
 
 import matplotlib
 import matplotlib.patches as patches
@@ -54,21 +56,15 @@ def fill_box(ax, i, j):
         )
     )
 
-
-def check_fill_day(year, month, day, weekday):
-    if (month, day) in fillday_list:
-        return True
-
-
 def check_color_day(year, month, day, weekday):
-    if (month, day) in holiday_list:
+    if date(year, month, day) in holidays.Brazil()['{}-01-01'.format(year): '{}-12-31'.format(year)]:
         return "red"
 
     if weekday == 6:  # Sunday
         return "red"
     
     if weekday == 5:  # Saturday
-        return "blue"
+        return "red"
 
     return "black"
 
@@ -124,8 +120,6 @@ def main(year, month, grid=False, fill=False):
             tick.label2.set_visible(False)
     month_calendar(ax, year, month, fill)
     st.pyplot(fig=fig)
-
-fillday_list = [(12, 24), (12, 25)]
 
 holiday_list = [
     (1, 1),
