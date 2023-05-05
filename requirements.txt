@@ -4,4 +4,4 @@ matplotlib
 openpyxl
 numpy
 pandas
-st_aggrid
+streamlit-aggrid
