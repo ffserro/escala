@@ -89,7 +89,7 @@ def month_calendar(ax, year, month, fill):
         i = x_start + weekday * x_offset_rate
         color = check_color_day(year, month, day, weekday)
 
-        if fill and check_fill_day(year, month, day, weekday):
+        if fill:
             fill_box(ax, i, j)
 
         label_day(ax, day, i, j, color)
