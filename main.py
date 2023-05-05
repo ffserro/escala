@@ -175,6 +175,9 @@ if mes != 0:
 
     for i in range(calendar.monthrange(ano,mes)[-1]):
         tabela['A{}'.format(3+i)] = date(ano, mes, i+1).strftime('%d/%m/%y')
+    
+    for i in range(calendar.monthrange(ano,mes)[-1]):
+        tabela['B{}'.format(3+i)] = date(ano, mes, i+1).weekday()
 
     for i in range(30):
         st.write(tabela['A{}'.format(3+i)].value, tabela['B{}'.format(3+i)].value)
