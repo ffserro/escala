@@ -125,31 +125,23 @@ def main(year, month, grid=False, fill=False):
     month_calendar(ax, year, month, fill)
     st.pyplot(fig=fig)
 
+fillday_list = [(12, 24), (12, 25)]
 
-if __name__ == "__main__":
-
-    fillday_list = [(12, 24), (12, 25)]
-
-    # Japanese holiday
-    holiday_list = [
-        (1, 1),
-        (1, 10),
-        (2, 11),
-        (2, 23),
-        (3, 21),
-        (4, 29),
-        (5, 3),
-        (5, 4),
-        (5, 5),
-        (7, 18),
-        (8, 11),
-        (9, 19),
-        (9, 23),
-        (10, 10),
-        (11, 3),
-        (11, 23),
-    ]
-
-    year = 2021
-    month = 12
-    main(year, month, grid=False, fill=False)
+holiday_list = [
+    (1, 1),
+    (1, 10),
+    (2, 11),
+    (2, 23),
+    (3, 21),
+    (4, 29),
+    (5, 3),
+    (5, 4),
+    (5, 5),
+    (7, 18),
+    (8, 11),
+    (9, 19),
+    (9, 23),
+    (10, 10),
+    (11, 3),
+    (11, 23),
+]
