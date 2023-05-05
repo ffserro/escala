@@ -11,7 +11,6 @@ import matplotlib.pyplot as plt
 
 import pandas as pd 
 import numpy as np
-from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, JsCode
 
 from openpyxl import Workbook, load_workbook
 
@@ -207,76 +206,8 @@ if mes != 0:
             corrida.append(nm_pre[0])
             nm_pre = nm_pre[1:] + [nm_pre[0]]
 
-    data = pd.DataFrame({'Data':[date(ano, mes, i+1).strftime('%d/%m/%y') for i in range(calendar.monthrange(ano, mes)[-1])], 'Dia':[['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'][date(ano, mes, i+1).weekday()] for i in range(calendar.monthrange(ano, mes)[-1])], 'Tab': [['P', 'V'][date(ano, mes, 1+i) in vermelha] for i in range(calendar.monthrange(ano, mes)[-1])], 'Nome': corrida})
+    df = pd.DataFrame({'Data':[date(ano, mes, i+1).strftime('%d/%m/%y') for i in range(calendar.monthrange(ano, mes)[-1])], 'Dia':[['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'][date(ano, mes, i+1).weekday()] for i in range(calendar.monthrange(ano, mes)[-1])], 'Tab': [['P', 'V'][date(ano, mes, 1+i) in vermelha] for i in range(calendar.monthrange(ano, mes)[-1])], 'Nome': corrida})
 
-    onRowDragEnd = JsCode("""
-    function onRowDragEnd(e) {
-        console.log('onRowDragEnd', e);
-    }
-    """)
-
-    getRowNodeId = JsCode("""
-    function getRowNodeId(data) {
-        return data.id
-    }
-    """)
-
-    onGridReady = JsCode("""
-    function onGridReady() {
-        immutableStore.forEach(
-            function(data, index) {
-                data.id = index;
-                });
-        gridOptions.api.setRowData(immutableStore);
-        }
-    """)
-
-    onRowDragMove = JsCode("""
-    function onRowDragMove(event) {
-        var movingNode = event.node;
-        var overNode = event.overNode;
-
-        var rowNeedsToMove = movingNode !== overNode;
-
-        if (rowNeedsToMove) {
-            var movingData = movingNode.data;
-            var overData = overNode.data;
-
-            immutableStore = newStore;
-
-            var fromIndex = immutableStore.indexOf(movingData);
-            var toIndex = immutableStore.indexOf(overData);
-
-            var newStore = immutableStore.slice();
-            moveInArray(newStore, fromIndex, toIndex);
-
-            immutableStore = newStore;
-            gridOptions.api.setRowData(newStore);
-
-            gridOptions.api.clearFocusedCell();
-        }
-
-        function moveInArray(arr, fromIndex, toIndex) {
-            var element = arr[fromIndex];
-            arr.splice(fromIndex, 1);
-            arr.splice(toIndex, 0, element);
-        }
-    }
-    """)
-
-    gb = GridOptionsBuilder.from_dataframe(data)
-    gb.configure_default_column(rowDrag = True, rowDragManaged = True, rowDragEntireRow = False, rowDragMultiRow=True)
-    gb.configure_column('bloco', rowDrag = True, rowDragEntireRow = False)
-    gb.configure_grid_options(rowDragManaged = True, onRowDragEnd = onRowDragEnd, deltaRowDataMode = True, getRowNodeId = getRowNodeId, onGridReady = onGridReady, animateRows = True, onRowDragMove = onRowDragMove)
-    gridOptions = gb.build()
-
-    data = AgGrid(data,
-                gridOptions=gridOptions,
-                allow_unsafe_jscode=True,
-                update_mode=GridUpdateMode.SORTING_CHANGED
-    )
-
-    st.write(data['data'])
-
+    df
 
 
