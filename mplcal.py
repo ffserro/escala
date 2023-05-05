@@ -1,92 +1,155 @@
-import calendar
+import datetime
+from calendar import monthrange
+from datetime import timedelta
+
+import matplotlib
+import matplotlib.patches as patches
 import matplotlib.pyplot as plt
 
-calendar.setfirstweekday(6) # Sunday is 1st day in US
-w_days = 'Sun Mon Tue Wed Thu Fri Sat'.split()
-m_names = '''
-January February March April
-May June July August
-September October November December'''.split()
+import streamlit as st
 
-class DayNotInMonthError(ValueError):
-    pass
 
-class MplCalendar(object):
-    def __init__(self, year, month):
-        self.year = year
-        self.month = month
-        self.cal = calendar.monthcalendar(year, month)
-        # A month of events are stored as a list of lists of list.
-        # Nesting, from outer to inner, Week, Day, Event_str
-        # Save the events data in the same format
-        self.events = [[[] for day in week] for week in self.cal]
+def label_month(year, month, ax, i, j, cl="black"):
+    months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+    ]
 
-    def _monthday_to_index(self, day):
-        '''The 2-d index of the day in the list of lists.
+    month_label = f"{months[month-1]} {year}"
+    ax.text(i, j, month_label, color=cl, va="center")
 
-        If the day is not in the month raise a DayNotInMonthError,
-        which is a subclass of ValueError.
 
-        '''
-        for week_n, week in enumerate(self.cal):
-            try:
-                i = week.index(day)
-                return week_n, i
-            except ValueError:
-                pass
-         # couldn't find the day
-        raise DayNotInMonth("There aren't {} days in the month".format(day))
+def label_weekday(ax, i, j, cl="black"):
+    x_offset_rate = 1
+    for weekday in ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]:
+        ax.text(i, j, weekday, ha="center", va="center", color=cl)
+        i += x_offset_rate
 
-    def add_event(self, day, event_str):
-        'Add an event string for the specified day'
-        week, w_day = self._monthday_to_index(day)
-        self.events[week][w_day].append(event_str)
 
-    def _render(self, **kwargs):
-        'create the calendar figure'
-        plot_defaults = dict(
-            sharex=True,
-            sharey=True,
-            figsize=(11, 8.5),
-            dpi=80,
+def label_day(ax, day, i, j, cl="black"):
+
+    ax.text(i, j, int(day), ha="center", va="center", color=cl)
+
+
+def fill_box(ax, i, j):
+    ax.add_patch(
+        patches.Rectangle(
+            (i - 0.5, j - 0.5),
+            1,
+            1,
+            edgecolor="blue",
+            facecolor="red",
+            alpha=0.1,
+            fill=True,
         )
-        plot_defaults.update(kwargs)
-        f, axs = plt.subplots(
-            len(self.cal), 7,
-            **plot_defaults
-        )
-        for week, ax_row in enumerate(axs):
-            for week_day, ax in enumerate(ax_row):
-                ax.set_xticks([])
-                ax.set_yticks([])
-                if self.cal[week][week_day] != 0:
-                    ax.text(.02, .98,
-                            str(self.cal[week][week_day]),
-                            verticalalignment='top',
-                            horizontalalignment='left')
-                contents = "\n".join(self.events[week][week_day])
-                ax.text(.03, .85, contents,
-                        verticalalignment='top',
-                        horizontalalignment='left',
-                        fontsize=9)
-
-        # use the titles of the first row as the weekdays
-        for n, day in enumerate(w_days):
-            axs[0][n].set_title(day)
-
-        # Place subplots in a close grid
-        f.subplots_adjust(hspace=0)
-        f.subplots_adjust(wspace=0)
-        f.suptitle(m_names[self.month-1] + ' ' + str(self.year),
-                   fontsize=20, fontweight='bold')
-
-    def show(self, **kwargs):
-        'display the calendar'
-        self._render(**kwargs)
-        plt.show()
+    )
 
 
-    def save(self, filename, **kwargs):
-        'save the calendar to the specified image file.'
-        self._render(**kwargs)
-        plt.savefig(filename)
+def check_fill_day(year, month, day, weekday):
+    if (month, day) in fillday_list:
+        return True
+
+
+def check_color_day(year, month, day, weekday):
+    if (month, day) in holiday_list:
+        return "red"
+
+    if weekday == 6:  # Sunday
+        return "red"
+    
+    if weekday == 5:  # Saturday
+        return "blue"
+
+    return "black"
+
+
+def month_calendar(ax, year, month, fill):
+    date = datetime.datetime(year, month, 1)
+
+    weekday, num_days = monthrange(year, month)
+
+    # adjust by 0.5 to set text at the ceter of grid square
+    x_start = 1 - 0.5
+    y_start = 5 + 0.5
+    x_offset_rate = 1
+    y_offset = -1
+
+    label_month(year, month, ax, x_start, y_start + 2)
+    label_weekday(ax, x_start, y_start + 1)
+
+    j = y_start
+
+    for day in range(1, num_days + 1):
+        i = x_start + weekday * x_offset_rate
+        color = check_color_day(year, month, day, weekday)
+
+        if fill and check_fill_day(year, month, day, weekday):
+            fill_box(ax, i, j)
+
+        label_day(ax, day, i, j, color)
+        weekday = (weekday + 1) % 7
+        if weekday == 0:
+            j += y_offset
+
+
+def main(year, month, grid=False, fill=False):
+    fig = plt.figure()
+    ax = fig.add_subplot()
+    ax.axis([0, 7, 0, 7])
+    ax.axis("off")
+
+    if grid:
+        ax.axis("on")
+        ax.grid(grid)
+        for tick in ax.xaxis.get_major_ticks():
+            tick.tick1line.set_visible(False)
+            tick.tick2line.set_visible(False)
+            tick.label1.set_visible(False)
+            tick.label2.set_visible(False)
+
+        for tick in ax.yaxis.get_major_ticks():
+            tick.tick1line.set_visible(False)
+            tick.tick2line.set_visible(False)
+            tick.label1.set_visible(False)
+            tick.label2.set_visible(False)
+    month_calendar(ax, year, month, fill)
+    st.pyplot(fig=fig)
+
+
+if __name__ == "__main__":
+
+    fillday_list = [(12, 24), (12, 25)]
+
+    # Japanese holiday
+    holiday_list = [
+        (1, 1),
+        (1, 10),
+        (2, 11),
+        (2, 23),
+        (3, 21),
+        (4, 29),
+        (5, 3),
+        (5, 4),
+        (5, 5),
+        (7, 18),
+        (8, 11),
+        (9, 19),
+        (9, 23),
+        (10, 10),
+        (11, 3),
+        (11, 23),
+    ]
+
+    year = 2021
+    month = 12
+    main(year, month, grid=False, fill=False)
