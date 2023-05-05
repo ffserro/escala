@@ -29,7 +29,7 @@ for single_date in (prm + timedelta(n) for n in range(calendar.monthrange(ano,me
     if single_date not in vermelha:
         preta.append(single_date)
 
-licpag = st.date_input('Qual é o dia da Licença Pagamento? ',value=prm, min_value=prm, max_value=ult)
+licpag = st.date_input('Qual é o dia da Licença Pagamento? ',value=min(preta), min_value=prm, max_value=ult)
 
 vermelha.append(licpag)
 preta.remove(licpag)
