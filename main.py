@@ -217,12 +217,15 @@ if mes != 0:
             para = st.date_input('Para: ')
         motivo = st.text_input('Motivo da troca')
         troca = st.button('Troca')
-
-    #if troca:
-
-
+    
+    motivos = []
+    if troca:
+        df[df.Data==de.strftime('%d/%m/%y')]['Nome'], df[df.Data==para.strftime('%d/%m/%y')]['Nome'] = df[df.Data==para.strftime('%d/%m/%y')]['Nome'], df[df.Data==de.strftime('%d/%m/%y')]['Nome']
+        motivo.append('Troca entre os dias {} e {}. Motivo: {}'.format(de.strftime('%d/%m/%y'), para.strftime('%d/%m/%y'), motivo))
 
     st.dataframe(df)
+
+    st.write(motivos)
 
 
 
