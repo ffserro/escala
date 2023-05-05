@@ -171,17 +171,14 @@ if mes != 0:
     workbook = load_workbook(filename='modelo.xlsx')
     tabela = workbook.active
 
-    for i in range(calendar.monthrange(ano,mes)[-1]):
+    for i in range(calendar.monthrange(ano, mes)[-1]):
         tabela['A{}'.format(3+i)] = date(ano, mes, i+1).strftime('%d/%m/%y')
     
-    for i in range(calendar.monthrange(ano,mes)[-1]):
+    for i in range(calendar.monthrange(ano, mes)[-1]):
         tabela['B{}'.format(3+i)] = ['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'][date(ano, mes, i+1).weekday()]
 
     for i in range(calendar.monthrange(ano, mes)[-1]):
-        if date(ano, mes, i+1) in vermelha:
-            tabela['C{}'.format(3+i)] = 'V'
-        elif date(ano, mes, i+1) in preta:
-            tabela['C{}'.format(3+1)] = 'P'
+        tabela['C{}'.format(3+i)] = ['P', 'V'][date(ano, mes, 1+i) in vermelha]
 
     for i in range(len(div_serv)):
         tabela['I{}'.format(3+i)] = div_serv[1+i]
