@@ -20,4 +20,4 @@ feriados = holidays.Brazil()
 
 st.write(feriados['{}-01-01'.format(ano): '{}-12-31'.format(ano)])
 
-licpag = st.date_input('Qual é o dia da Licença Pagamento? ', value = prm, min_value=prm, max_value=ult)
+licpag = st.date_input('Qual é o dia da Licença Pagamento? ', value = prm.strftime('%d/%m/%y'), min_value=prm, max_value=ult)
