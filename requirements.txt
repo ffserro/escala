@@ -2,3 +2,6 @@ streamlit
 holidays
 matplotlib
 openpyxl
+numpy
+pandas
+st_aggrid

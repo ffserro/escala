@@ -9,6 +9,10 @@ import matplotlib
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
 
+import pandas as pd 
+import numpy as np
+from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
+
 from openpyxl import Workbook, load_workbook
 
 ano = 2023
@@ -186,6 +190,14 @@ if mes != 0:
     with st.container():
         col1, col2 = st.columns(2)
         with col1:
-            st.selectbox('Primeiro militar da escala preta', div_serv.values())
+            p_1 = st.selectbox('Primeiro militar da escala preta', div_serv.values())
         with col2:
-            st.selectbox('Primeiro militar da escala vermelha', reversed(div_serv.values()))
+            v_1 = st.selectbox('Primeiro militar da escala vermelha', reversed(div_serv.values()))
+
+    corrida = []
+
+    nm_ver = reversed(div_serv.values())[div_serv.values().index(v_1):]
+    nm_pre = div_serv.values()[div_serv.values().index(p_1):]
+
+    st.write(nm_ver)
+    st.write(nm_pre)
