@@ -1,7 +1,7 @@
 import streamlit as st
 import calendar
 import holidays
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 ano = 2023
 
 st.title('Escala de serviço')
