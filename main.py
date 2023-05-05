@@ -207,29 +207,76 @@ if mes != 0:
             corrida.append(nm_pre[0])
             nm_pre = nm_pre[1:] + [nm_pre[0]]
 
-    df = pd.DataFrame({'Data':[date(ano, mes, i+1).strftime('%d/%m/%y') for i in range(calendar.monthrange(ano, mes)[-1])], 'Dia':[['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'][date(ano, mes, i+1).weekday()] for i in range(calendar.monthrange(ano, mes)[-1])], 'Tab': [['P', 'V'][date(ano, mes, 1+i) in vermelha] for i in range(calendar.monthrange(ano, mes)[-1])], 'Nome': corrida})
+    data = pd.DataFrame({'Data':[date(ano, mes, i+1).strftime('%d/%m/%y') for i in range(calendar.monthrange(ano, mes)[-1])], 'Dia':[['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'][date(ano, mes, i+1).weekday()] for i in range(calendar.monthrange(ano, mes)[-1])], 'Tab': [['P', 'V'][date(ano, mes, 1+i) in vermelha] for i in range(calendar.monthrange(ano, mes)[-1])], 'Nome': corrida})
 
-    gb = GridOptionsBuilder.from_dataframe(df)
-    gb.configure_pagination(paginationAutoPageSize=True) #Add pagination
-    gb.configure_side_bar() #Add a sidebar
-    gb.configure_selection('multiple', use_checkbox=True, groupSelectsChildren="Group checkbox select children") #Enable multi-row selection
+    onRowDragEnd = JsCode("""
+    function onRowDragEnd(e) {
+        console.log('onRowDragEnd', e);
+    }
+    """)
+
+    getRowNodeId = JsCode("""
+    function getRowNodeId(data) {
+        return data.id
+    }
+    """)
+
+    onGridReady = JsCode("""
+    function onGridReady() {
+        immutableStore.forEach(
+            function(data, index) {
+                data.id = index;
+                });
+        gridOptions.api.setRowData(immutableStore);
+        }
+    """)
+
+    onRowDragMove = JsCode("""
+    function onRowDragMove(event) {
+        var movingNode = event.node;
+        var overNode = event.overNode;
+
+        var rowNeedsToMove = movingNode !== overNode;
+
+        if (rowNeedsToMove) {
+            var movingData = movingNode.data;
+            var overData = overNode.data;
+
+            immutableStore = newStore;
+
+            var fromIndex = immutableStore.indexOf(movingData);
+            var toIndex = immutableStore.indexOf(overData);
+
+            var newStore = immutableStore.slice();
+            moveInArray(newStore, fromIndex, toIndex);
+
+            immutableStore = newStore;
+            gridOptions.api.setRowData(newStore);
+
+            gridOptions.api.clearFocusedCell();
+        }
+
+        function moveInArray(arr, fromIndex, toIndex) {
+            var element = arr[fromIndex];
+            arr.splice(fromIndex, 1);
+            arr.splice(toIndex, 0, element);
+        }
+    }
+    """)
+
+    gb = GridOptionsBuilder.from_dataframe(data)
+    gb.configure_default_column(rowDrag = False, rowDragManaged = True, rowDragEntireRow = False, rowDragMultiRow=True)
+    gb.configure_column('bloco', rowDrag = True, rowDragEntireRow = True)
+    gb.configure_grid_options(rowDragManaged = True, onRowDragEnd = onRowDragEnd, deltaRowDataMode = True, getRowNodeId = getRowNodeId, onGridReady = onGridReady, animateRows = True, onRowDragMove = onRowDragMove)
     gridOptions = gb.build()
 
-    grid_response = AgGrid(
-        df,
-        gridOptions=gridOptions,
-        data_return_mode='AS_INPUT', 
-        update_mode='MODEL_CHANGED', 
-        fit_columns_on_grid_load=True,
-        theme='alpine', #Add theme color to the table
-        enable_enterprise_modules=True,
-        #height=350, 
-        width='100%',
-        reload_data=True
+    data = AgGrid(data,
+                gridOptions=gridOptions,
+                allow_unsafe_jscode=True,
+                update_mode=GridUpdateMode.MANUAL
     )
 
-    data = grid_response['data']
-    selected = grid_response['selected_rows'] 
-    df = pd.DataFrame(selected) #Pass the selected rows to a new dataframe df
+    st.write(data['data'])
 
-    df
+
+
