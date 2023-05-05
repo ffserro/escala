@@ -40,9 +40,9 @@ vermelha.sort()
 
 from mplcal import main
 
-fillday_list = [(12, 24), (12, 25)]
+global fillday_list = [(12, 24), (12, 25)]
 
-holiday_list = [
+global holiday_list = [
     (1, 1),
     (1, 10),
     (2, 11),
