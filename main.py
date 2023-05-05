@@ -174,9 +174,9 @@ if mes != 0:
     tabela = workbook.active
 
     for i in range(calendar.monthrange(ano,mes)[-1]):
-        st.write(date(ano, mes, i+1).weekday())
-        tabela['A{}'.format(3+i)] = date(ano, mes, i+1).strftime('%d/%m/%y')
-        tabela['B{}'.format(3+1)] = date(ano, mes, i+1).weekday()
+        aux = date(ano, mes, i+1).weekday())
+        tabela['A{}'.format(3+i)] = aux.strftime('%d/%m/%y')
+        tabela['B{}'.format(3+1)] = aux.weekday()
 
     for i in range(30):
         st.write(tabela['A{}'.format(3+i)].value, tabela['B{}'.format(3+i)].value)
