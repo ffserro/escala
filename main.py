@@ -10,7 +10,7 @@ st.write(calendar.month(2023, 5))
 
 feriados = holidays.Brazil()
 
-st.write(feriados)
+st.write(feriados['2023-01-01': '2023-12-31'])
 
 data = st.date_input('Entre com uma data')
 
