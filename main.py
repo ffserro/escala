@@ -265,7 +265,7 @@ if mes != 0:
     """)
 
     gb = GridOptionsBuilder.from_dataframe(data)
-    gb.configure_default_column(rowDrag = False, rowDragManaged = True, rowDragEntireRow = False, rowDragMultiRow=True)
+    gb.configure_default_column(rowDrag = True, rowDragManaged = True, rowDragEntireRow = True, rowDragMultiRow=True)
     gb.configure_column('bloco', rowDrag = True, rowDragEntireRow = True)
     gb.configure_grid_options(rowDragManaged = True, onRowDragEnd = onRowDragEnd, deltaRowDataMode = True, getRowNodeId = getRowNodeId, onGridReady = onGridReady, animateRows = True, onRowDragMove = onRowDragMove)
     gridOptions = gb.build()
