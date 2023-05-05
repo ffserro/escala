@@ -24,8 +24,10 @@ for i in feriados:
     if i >= prm and i <= ult:
         vermelha.append(i)
 
+licpag = st.date_input('Qual é o dia da Licença Pagamento? ',value=prm, min_value=prm, max_value=ult)
+
+
 vermelha.sort()
 
 st.write(vermelha)
 
-licpag = st.date_input('Qual é o dia da Licença Pagamento? ',value=prm, min_value=prm, max_value=ult)
