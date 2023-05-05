@@ -213,10 +213,10 @@ if mes != 0:
         col1, col2 = st.columns(2)
         with col1:
             de = st.date_input('De: ')
-            motivo = st.text_input('Motivo da troca')
         with col2:
             para = st.date_input('Para: ')
-            troca = st.button('Troca')
+        motivo = st.text_input('Motivo da troca')
+        troca = st.button('Troca')
 
     #if troca:
 
