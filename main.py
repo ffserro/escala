@@ -170,5 +170,6 @@ if mes != 0:
     
     st.write(div_serv)
 
-    tabela = load_workbook(filename='modelo.xlsx')
-    st.write(tabela.sheetnames)
+    workbook = load_workbook(filename='modelo.xlsx')
+    tabela = workbook.active
+    st.write(tabela)
