@@ -7,7 +7,7 @@ from datetime import datetime as dt
 st.title('Escala de serviço')
 
 meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
-mes = st.selectbox(meses)
+mes = meses.index(st.selectbox('Escolha o mês da escala a ser visualizada: ',meses))
 
 st.write(mes)
 
