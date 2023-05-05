@@ -40,4 +40,4 @@ vermelha.sort()
 
 from mplcal import main
 
-main(ano, mes, grid=False, fill=False)
+main(ano, mes, grid=True, fill=True)

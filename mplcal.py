@@ -12,17 +12,17 @@ import streamlit as st
 def label_month(year, month, ax, i, j, cl="black"):
     months = [
         "Jan",
-        "Feb",
+        "Fev",
         "Mar",
-        "Apr",
-        "May",
+        "Abr",
+        "Mai",
         "Jun",
         "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
+        "Ago",
+        "Set",
+        "Out",
         "Nov",
-        "Dec",
+        "Dez",
     ]
 
     month_label = f"{months[month-1]} {year}"
@@ -31,7 +31,7 @@ def label_month(year, month, ax, i, j, cl="black"):
 
 def label_weekday(ax, i, j, cl="black"):
     x_offset_rate = 1
-    for weekday in ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]:
+    for weekday in ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"]:
         ax.text(i, j, weekday, ha="center", va="center", color=cl)
         i += x_offset_rate
 
