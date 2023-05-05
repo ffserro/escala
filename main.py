@@ -17,7 +17,8 @@ vermelha = []
 feriados = holidays.Brazil()['{}-01-01'.format(ano): '{}-12-31'.format(ano)]
 
 for single_date in (prm + timedelta(n) for n in range(calendar.monthrange(ano,mes)[-1])):
-    vermelha.append(single_date)
+    if single_date.weekday() in (5,6):
+        vermelha.append(single_date)
 
 st.write(vermelha)
 
