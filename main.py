@@ -14,6 +14,15 @@ ult = date(ano, mes, calendar.monthrange(ano,mes)[-1])
 
 feriados = holidays.Brazil()['{}-01-01'.format(ano): '{}-12-31'.format(ano)]
 
-st.write(feriados)
+def iterdates(date1, date2):
+    one_day = datetime.timedelta(days = 1)
+    current = date1
+    while current < date2:
+        yield current
+        current += one_day
+
+for d in iterdates(prm, ult):
+    if d.weekday() in (5, 6):
+        print (d, d.weekday())
 
 licpag = st.date_input('Qual é o dia da Licença Pagamento? ',value=prm, min_value=prm, max_value=ult)
