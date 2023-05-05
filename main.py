@@ -197,7 +197,7 @@ if mes != 0:
     corrida = []
 
     nm_ver = list(reversed(div_serv.values()))[list(reversed(div_serv.values())).index(v_1):] + list(reversed(div_serv.values()))[:list(reversed(div_serv.values())).index(v_1)]
-    nm_pre = list(div_serv.values())[list(div_serv.values()).index(p_1):] + list(div_serv.values()) 
+    nm_pre = list(div_serv.values())[list(div_serv.values()).index(p_1):] + list(div_serv.values())[:list(div_serv.values()).index(p_1)]
 
     st.write(nm_ver)
     st.write(nm_pre)
