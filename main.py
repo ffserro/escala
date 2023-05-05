@@ -21,7 +21,7 @@ for single_date in (prm + timedelta(n) for n in range(calendar.monthrange(ano,me
         vermelha.append(single_date)
 
 for i in feriados:
-    if i >= prm and i <= ult:
+    if i >= prm and i <= ult and i not in vermelha:
         vermelha.append(i)
 
 licpag = st.date_input('Qual é o dia da Licença Pagamento? ',value=prm, min_value=prm, max_value=ult)
