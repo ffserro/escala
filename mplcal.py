@@ -101,7 +101,7 @@ def month_calendar(ax, year, month, fill):
 def main(year, month, grid=False, fill=False):
     fig = plt.figure()
     ax = fig.add_subplot()
-    ax.axis([0, 7, 0, 7])
+    ax.axis([0, 7, 0, 6])
     ax.axis("off")
 
     if grid:
