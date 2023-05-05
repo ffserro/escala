@@ -40,6 +40,9 @@ vermelha.sort()
 
 from mplcal import main
 
+global fillday_list
+global holiday_list
+
 fillday_list = [(12, 24), (12, 25)]
 
 holiday_list = [
@@ -60,8 +63,5 @@ holiday_list = [
     (11, 3),
     (11, 23),
 ]
-
-global fillday_list
-global holiday_list
 
 main(ano, mes, grid=False, fill=False)
