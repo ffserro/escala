@@ -177,6 +177,6 @@ if mes != 0:
         tabela['A{}'.format(3+i)] = date(ano, mes, i+1).strftime('%d/%m/%y')
         tabela['B{}'.format(3+1)] = date(ano, mes, i+1).weekday()
 
-    st.write(date(2023,05,05).weekday())
+    st.write(date(2023,5,5).weekday())
     for i in range(30):
         st.write(tabela['A{}'.format(3+i)].value, tabela['B{}'.format(3+i)].value)
