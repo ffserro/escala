@@ -1,11 +1,16 @@
 import streamlit as st
 import calendar
+import holidays
 from datetime import datetime as dt
 
 
 st.title('Escala de serviço')
 
 st.write(calendar.month(2023, 5))
+
+feriados = holidays.Brazil()
+
+st.write(feriados)
 
 data = st.date_input('Entre com uma data')
 
