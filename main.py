@@ -6,6 +6,12 @@ from datetime import datetime as dt
 
 st.title('Escala de serviço')
 
+meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+mes = meses.index(st.selectbox(meses))
+
+st.write(mes)
+
+
 st.write(calendar.month(2023, 5))
 
 feriados = holidays.Brazil()
