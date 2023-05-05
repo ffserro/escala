@@ -32,7 +32,7 @@ for single_date in (prm + timedelta(n) for n in range(calendar.monthrange(ano,me
 licpag = st.date_input('Qual é o dia da Licença Pagamento? ',value=prm, min_value=prm, max_value=ult)
 
 vermelha.append(licpag)
-preta.del[licpag]
+preta.remove(licpag)
 
 vermelha.sort()
 
