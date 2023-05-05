@@ -25,7 +25,7 @@ def iterdates(date1, date2):
 
 for d in iterdates(prm, ult):
     if d.weekday() in (5, 6):
-        vermalha.append(d)
+        vermelha.append(d)
 
 st.write(vermelha)
 
