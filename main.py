@@ -203,11 +203,9 @@ if mes != 0:
         if date(ano, mes, i+1) in preta:
             corrida.append(nm_pre[0])
             nm_pre = nm_pre[1:] + [nm_pre[0]]
-
-    df = pd.DataFrame({'Data':[date(ano, mes, i+1).strftime('%d/%m/%y') for i in range(calendar.monthrange(ano, mes)[-1])], 'Dia':[['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'][date(ano, mes, i+1).weekday()] for i in range(calendar.monthrange(ano, mes)[-1])], 'Tab': [['P', 'V'][date(ano, mes, 1+i) in vermelha] for i in range(calendar.monthrange(ano, mes)[-1])], 'Nome': corrida})
-
+            
     if 'df' not in st.session_state:
-        st.session_state.df = df
+        st.session_state.df = pd.DataFrame({'Data':[date(ano, mes, i+1).strftime('%d/%m/%y') for i in range(calendar.monthrange(ano, mes)[-1])], 'Dia':[['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'][date(ano, mes, i+1).weekday()] for i in range(calendar.monthrange(ano, mes)[-1])], 'Tab': [['P', 'V'][date(ano, mes, 1+i) in vermelha] for i in range(calendar.monthrange(ano, mes)[-1])], 'Nome': corrida})
 
     st.title('Trocas:')
     with st.container():
@@ -225,7 +223,6 @@ if mes != 0:
         idxb = st.session_state.df.Data.to_list().index(para.strftime('%d/%m/%y'))
         nms = st.session_state.df.Nome.to_list()
         nms[idxa], nms[idxb] = nms[idxb], nms[idxa]
-        df['Nome'] = nms   
         st.session_state.df['Nome'] = nms        
         st.session_state.motivos.append('Troca entre os dias {} e {}. Motivo: {}'.format(de.strftime('%d/%m/%y'), para.strftime('%d/%m/%y'), motivo))
     
@@ -236,9 +233,9 @@ if mes != 0:
     for i in range(calendar.monthrange(ano, mes)[-1]):
         tabela['D{}'.format(3+i)] = st.session_state.df.Nome.to_list()[i]
 
-    workbook.save('tabela.xlsx')
+    #workbook.save('tabela.xlsx')
 
-    st.download_button('Baixar tabela', data = 'tabela.xlsx', file_name = 'TABELA DE SERVICO - {}{}.xlsx'.format(["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"][mes-1].upper(), ano))
+    #st.download_button('Baixar tabela', data = 'tabela.xlsx', file_name = 'TABELA DE SERVICO - {}{}.xlsx'.format(["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"][mes-1].upper(), ano))
 
 
 
