@@ -192,7 +192,7 @@ if mes != 0:
         per_ind = st.date_input('Qual é o período?', [])
         send_ind = st.form_submit_button('Enviar')
         if send_ind:
-            st.session_state.indisponivel[mil_ind] = per_ind
+            st.session_state.indisponivel[mil_ind] = [i for i in range(per_ind[0], per_ind[-1]]
     st.write(st.session_state.indisponivel)
 
     with st.form('inicio_tabela'):
