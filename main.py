@@ -196,7 +196,8 @@ if mes != 0:
         if send_ind:
             st.session_state.indisponivel[mil_ind] = [per_ind[0] + timedelta(n) for n in range((per_ind[-1] - per_ind[0]).days)]
     st.write('Indisponíveis:')
-    st.write(st.session_state.indisponivel)
+    for i in st.session_state.indisponivel:
+        st.write('{} indisponível entre {} e {}.'.format(i, st.session_state.indisponivel[i][0], st.session_state.indisponivel[i][-1]))
 
     with st.form('inicio_tabela'):
         with st.container():
