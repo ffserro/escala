@@ -233,7 +233,7 @@ if mes != 0:
         nms = st.session_state.df.Nome.to_list()
         nms[idxa], nms[idxb] = nms[idxb], nms[idxa]
         st.session_state.df['Nome'] = nms        
-        motivos.append('Troca entre os dias {} e {}. Motivo: {}'.format(de.strftime('%d/%m/%y'), para.strftime('%d/%m/%y'), motivo))
+        st.session_state.motivos.append('Troca entre os dias {} e {}. Motivo: {}'.format(de.strftime('%d/%m/%y'), para.strftime('%d/%m/%y'), motivo))
     
     st.dataframe(st.session_state.df.sort_values(by='Data'))
 
