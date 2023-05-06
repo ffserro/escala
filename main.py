@@ -211,6 +211,7 @@ if mes != 0:
             submit = st.form_submit_button('Gerar tabela')
     if submit:
         st.session_state.generated = True
+        st.experimental_rerun()
     
     if 'generated' not in st.session_state:
         st.stop()
