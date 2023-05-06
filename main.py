@@ -184,47 +184,49 @@ if mes != 0:
     for i in range(len(div_serv)):
         tabela['I{}'.format(3+i)] = div_serv[1+i]
 
-    with st.container():
-        col1, col2 = st.columns(2)
-        with col1:
-            p_1 = st.selectbox('Primeiro militar da escala preta', div_serv.values())
-        with col2:
-            v_1 = st.selectbox('Primeiro militar da escala vermelha', reversed(div_serv.values()))
+    with st.form('inicio_tabela'):
+        with st.container():
+            col1, col2 = st.columns(2)
+            with col1:
+                p_1 = st.selectbox('Primeiro militar da escala preta', div_serv.values())
+            with col2:
+                v_1 = st.selectbox('Primeiro militar da escala vermelha', reversed(div_serv.values()))
+            submit = st.form_submit_button('Gerar tabela')
+    if submit:
+        corrida = []
 
-    corrida = []
+        nm_ver = list(reversed(div_serv.values()))[list(reversed(div_serv.values())).index(v_1):] + list(reversed(div_serv.values()))[:list(reversed(div_serv.values())).index(v_1)]
+        nm_pre = list(div_serv.values())[list(div_serv.values()).index(p_1):] + list(div_serv.values())[:list(div_serv.values()).index(p_1)]
 
-    nm_ver = list(reversed(div_serv.values()))[list(reversed(div_serv.values())).index(v_1):] + list(reversed(div_serv.values()))[:list(reversed(div_serv.values())).index(v_1)]
-    nm_pre = list(div_serv.values())[list(div_serv.values()).index(p_1):] + list(div_serv.values())[:list(div_serv.values()).index(p_1)]
+        for i in range(calendar.monthrange(ano, mes)[-1]):
+            if date(ano, mes, i+1) in vermelha:
+                corrida.append(nm_ver[0])
+                nm_ver = nm_ver[1:] + [nm_ver[0]]
+            if date(ano, mes, i+1) in preta:
+                corrida.append(nm_pre[0])
+                nm_pre = nm_pre[1:] + [nm_pre[0]]
+        if 'df' not in st.session_state:
+            st.session_state.df = pd.DataFrame({'Data':[date(ano, mes, i+1).strftime('%d/%m/%y') for i in range(calendar.monthrange(ano, mes)[-1])], 'Dia':[['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'][date(ano, mes, i+1).weekday()] for i in range(calendar.monthrange(ano, mes)[-1])], 'Tab': [['P', 'V'][date(ano, mes, 1+i) in vermelha] for i in range(calendar.monthrange(ano, mes)[-1])], 'Nome': corrida})
 
-    for i in range(calendar.monthrange(ano, mes)[-1]):
-        if date(ano, mes, i+1) in vermelha:
-            corrida.append(nm_ver[0])
-            nm_ver = nm_ver[1:] + [nm_ver[0]]
-        if date(ano, mes, i+1) in preta:
-            corrida.append(nm_pre[0])
-            nm_pre = nm_pre[1:] + [nm_pre[0]]
-    if 'df' not in st.session_state:
-        st.session_state.df = pd.DataFrame({'Data':[date(ano, mes, i+1).strftime('%d/%m/%y') for i in range(calendar.monthrange(ano, mes)[-1])], 'Dia':[['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'][date(ano, mes, i+1).weekday()] for i in range(calendar.monthrange(ano, mes)[-1])], 'Tab': [['P', 'V'][date(ano, mes, 1+i) in vermelha] for i in range(calendar.monthrange(ano, mes)[-1])], 'Nome': corrida})
+        st.title('Trocas:')
+        with st.container():
+            col1, col2 = st.columns(2)
+            with col1:
+                de = st.date_input('De: ')
+            with col2:
+                para = st.date_input('Para: ')
+            motivo = st.text_input('Motivo da troca')
+            troca = st.button('Troca')
+        if 'motivos' not in st.session_state:
+            st.session_state.motivos = []
+        if troca:
+            idxa = st.session_state.df.Data.to_list().index(de.strftime('%d/%m/%y'))
+            idxb = st.session_state.df.Data.to_list().index(para.strftime('%d/%m/%y'))
+            nms = st.session_state.df.Nome.to_list()
+            nms[idxa], nms[idxb] = nms[idxb], nms[idxa]
+            st.session_state.df['Nome'] = nms        
+            st.session_state.motivos.append('Troca entre os dias {} e {}. Motivo: {}'.format(de.strftime('%d/%m/%y'), para.strftime('%d/%m/%y'), motivo))
+        
+        st.dataframe(st.session_state.df.sort_values(by='Data'))
 
-    st.title('Trocas:')
-    with st.container():
-        col1, col2 = st.columns(2)
-        with col1:
-            de = st.date_input('De: ')
-        with col2:
-            para = st.date_input('Para: ')
-        motivo = st.text_input('Motivo da troca')
-        troca = st.button('Troca')
-    if 'motivos' not in st.session_state:
-        st.session_state.motivos = []
-    if troca:
-        idxa = st.session_state.df.Data.to_list().index(de.strftime('%d/%m/%y'))
-        idxb = st.session_state.df.Data.to_list().index(para.strftime('%d/%m/%y'))
-        nms = st.session_state.df.Nome.to_list()
-        nms[idxa], nms[idxb] = nms[idxb], nms[idxa]
-        st.session_state.df['Nome'] = nms        
-        st.session_state.motivos.append('Troca entre os dias {} e {}. Motivo: {}'.format(de.strftime('%d/%m/%y'), para.strftime('%d/%m/%y'), motivo))
-    
-    st.dataframe(st.session_state.df.sort_values(by='Data'))
-
-    st.write(st.session_state.motivos)
+        st.write(st.session_state.motivos)
