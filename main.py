@@ -186,7 +186,7 @@ if mes != 0:
     for i in range(len(div_serv)):
         tabela['I{}'.format(3+i)] = div_serv[1+i]
 
-    if 'indisponivel' not in session_state:
+    if 'indisponivel' not in st.session_state:
         st.session_state.indisponivel = {}
     with st.form('indisponibilidade'):
         st.text('Adicionar indisponibilidades')
