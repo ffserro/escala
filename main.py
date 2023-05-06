@@ -188,7 +188,9 @@ if mes != 0:
 
     with st.form('indisponibilidade'):
         st.text('Indisponibilidades')
-        st.multiselect('Selecione os militares com indisponibilidades:', list(div_serv.values()))
+        indisp = st.multiselect('Selecione os militares com indisponibilidades:', list(div_serv.values()))
+        for i in indisp:
+            st.date_input('Qual é o período?', [])
         st.form_submit_button('Enviar')
 
     with st.form('inicio_tabela'):
