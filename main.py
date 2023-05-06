@@ -188,6 +188,8 @@ if mes != 0:
 
     with st.form('indisponibilidade'):
         st.text('Indisponibilidades')
+        st.multiselect('Selecione os militares com indisponibilidades:', list(div_serv.values()))
+        st.form_submit_button('Enviar')
 
     with st.form('inicio_tabela'):
         with st.container():
