@@ -238,6 +238,9 @@ if mes != 0:
 
         for i in range(calendar.monthrange(ano, mes)[-1]):
             tabela['D{}'.format(3+i)] = st.session_state.df.Nome[i]
+        
+        for i in range(len(st.session_state.motivos)):
+            tabela['F{}'.format(33+i)] = st.state_session.motivos[i]
 
         with NamedTemporaryFile() as tmp:
             workbook.save(tmp.name)
