@@ -194,7 +194,7 @@ if mes != 0:
         per_ind = st.date_input('Qual é o período?', [])
         send_ind = st.form_submit_button('Enviar')
         if send_ind:
-            st.session_state.indisponivel[mil_ind] = [per_ind[0] + timedelta(n) for n in range((per_ind[-1] - per_ind[0]).days)]
+            st.session_state.indisponivel[mil_ind] = [per_ind[0] + timedelta(n) for n in range((per_ind[-1] - per_ind[0]).days+1)]
     
     if len(st.session_state.indisponivel) != 0:
         st.write('Indisponíveis:')
@@ -222,15 +222,19 @@ if mes != 0:
 
         for i in range(calendar.monthrange(ano, mes)[-1]):
             if date(ano, mes, i+1) in vermelha:
-                while date(ano, mes, i+1) in st.session_state.indisponivel[nm_ver[0]]:
+                try:
+                    while date(ano, mes, i+1) in st.session_state.indisponivel[nm_ver[0]]:
+                        nm_ver = nm_ver[1:] + [nm_ver[0]]
+                except:
+                    corrida.append(nm_ver[0])
                     nm_ver = nm_ver[1:] + [nm_ver[0]]
-                corrida.append(nm_ver[0])
-                nm_ver = nm_ver[1:] + [nm_ver[0]]
             if date(ano, mes, i+1) in preta:
-                while date(ano, mes, i+1) in st.session_state.indisponivel[nm_ver[0]]:
+                try:
+                    while date(ano, mes, i+1) in st.session_state.indisponivel[nm_ver[0]]:
+                        nm_pre = nm_pre[1:] + [nm_pre[0]]
+                except:
+                    corrida.append(nm_pre[0])
                     nm_pre = nm_pre[1:] + [nm_pre[0]]
-                corrida.append(nm_pre[0])
-                nm_pre = nm_pre[1:] + [nm_pre[0]]
         if 'df' not in st.session_state:
             st.session_state.df = pd.DataFrame({'Data':[date(ano, mes, i+1).strftime('%d/%m/%y') for i in range(calendar.monthrange(ano, mes)[-1])], 'Dia':[['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'][date(ano, mes, i+1).weekday()] for i in range(calendar.monthrange(ano, mes)[-1])], 'Tab': [['P', 'V'][date(ano, mes, 1+i) in vermelha] for i in range(calendar.monthrange(ano, mes)[-1])], 'Nome': corrida})
 
