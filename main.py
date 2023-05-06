@@ -237,8 +237,8 @@ if mes != 0:
         for i in range(calendar.monthrange(ano, mes)[-1]):
             tabela['D{}'.format(3+i)] = st.session_state.df.Nome[i]
 
-        st.write(workbook)
+        with NamedTemporaryFile() as tmp:
+            workbook.save(tmp.name)
+            data = BytesIO(tmp.read())
 
-        workbook.save('tabela.xlsx')
-
-        st.download_button('Baixar tabela', data = workbook)
+        st.download_button('Baixar tabela', data=data, mime='xlsx', file_name='tabela.xlsx')
