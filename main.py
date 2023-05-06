@@ -22,19 +22,8 @@ st.title('Escala de serviço')
 meses = ['-', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
 mes = meses.index(st.selectbox('Escolha o mês da escala a ser visualizada: ', meses))
 
-# Divisão de serviço
-div_serv = {1:'CT Cespes',
-            2:'CT Cassias',
-            3:'CT Garcez',
-            4:'CT Diogo',
-            5:'CT Giovanni',
-            6:'CT(QC-CA) Damasceno',
-            7:'1T(IM) Sêrro',
-            8:'SO-AM Anderson Santos',
-            9:'SO-EL Alfredo',
-            10:'SO-MO Alvarez'}
 
-motivos = []
+
 
 
 
@@ -178,6 +167,18 @@ if mes != 0:
 
     main(ano, mes, grid=True, fill=True)
 
+    # Divisão de serviço
+    div_serv = {1:'CT Cespes',
+                2:'CT Cassias',
+                3:'CT Garcez',
+                4:'CT Diogo',
+                5:'CT Giovanni',
+                6:'CT(QC-CA) Damasceno',
+                7:'1T(IM) Sêrro',
+                8:'SO-AM Anderson Santos',
+                9:'SO-EL Alfredo',
+                10:'SO-MO Alvarez'}
+
     workbook = load_workbook(filename='modelo.xlsx')
     tabela = workbook.active
 
@@ -213,7 +214,7 @@ if mes != 0:
             corrida.append(nm_pre[0])
             nm_pre = nm_pre[1:] + [nm_pre[0]]
 
-    df = pd.DataFrame({'Data':[date(ano, mes, i+1).strftime('%d/%m/%y') for i in range(calendar.monthrange(ano, mes)[-1])], 'Dia':[['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'][date(ano, mes, i+1).weekday()] for i in range(calendar.monthrange(ano, mes)[-1])], 'Tab': [['P', 'V'][date(ano, mes, 1+i) in vermelha] for i in range(calendar.monthrange(ano, mes)[-1])], 'Nome': corrida})
+    st.session_state.df = pd.DataFrame({'Data':[date(ano, mes, i+1).strftime('%d/%m/%y') for i in range(calendar.monthrange(ano, mes)[-1])], 'Dia':[['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'][date(ano, mes, i+1).weekday()] for i in range(calendar.monthrange(ano, mes)[-1])], 'Tab': [['P', 'V'][date(ano, mes, 1+i) in vermelha] for i in range(calendar.monthrange(ano, mes)[-1])], 'Nome': corrida})
 
     st.title('Trocas:')
     with st.container():
@@ -225,18 +226,18 @@ if mes != 0:
         motivo = st.text_input('Motivo da troca')
         troca = st.button('Troca')
     
-    
+    st.session_state.motivos = []
     if troca:
-        idxa = df.Data.to_list().index(de.strftime('%d/%m/%y'))
-        idxb = df.Data.to_list().index(para.strftime('%d/%m/%y'))
-        nms = df.Nome.to_list()
+        idxa = st.session_state.df.Data.to_list().index(de.strftime('%d/%m/%y'))
+        idxb = st.session_state.df.Data.to_list().index(para.strftime('%d/%m/%y'))
+        nms = st.session_state.df.Nome.to_list()
         nms[idxa], nms[idxb] = nms[idxb], nms[idxa]
-        df['Nome'] = nms        
+        st.session_state.df['Nome'] = nms        
         motivos.append('Troca entre os dias {} e {}. Motivo: {}'.format(de.strftime('%d/%m/%y'), para.strftime('%d/%m/%y'), motivo))
     
-    st.dataframe(df.sort_values(by='Data'))
+    st.dataframe(st.session_state.df.sort_values(by='Data'))
 
-    st.write(motivos)
+    st.write(st.session_state.motivos)
 
 
 
