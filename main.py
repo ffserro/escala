@@ -220,9 +220,12 @@ if mes != 0:
     
     motivos = []
     if troca:
-        df[df.Data==de.strftime('%d/%m/%y')]['Nome'], df[df.Data==para.strftime('%d/%m/%y')]['Nome'] = df[df.Data==para.strftime('%d/%m/%y')]['Nome'], df[df.Data==de.strftime('%d/%m/%y')]['Nome']
+        idxa = df.Data.to_list().index(de.strftime('%d/%m/%y'))
+        idxb = df.Data.to_list().index(para.strftime('%d/%m/%y'))
+        nms = df.Nome.to_list()
+        nms[idxa], nms[idxb] = nms[idxb], nms[idxa]
+        df['Nome'] = nms        
         motivos.append('Troca entre os dias {} e {}. Motivo: {}'.format(de.strftime('%d/%m/%y'), para.strftime('%d/%m/%y'), motivo))
-        st.dataframe(df)
     
     st.dataframe(df.sort_values(by='Data'))
 
