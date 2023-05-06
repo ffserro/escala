@@ -185,12 +185,15 @@ if mes != 0:
 
     for i in range(len(div_serv)):
         tabela['I{}'.format(3+i)] = div_serv[1+i]
-
+    st.session_state.indisponivel = {}
     with st.form('indisponibilidade'):
         st.text('Adicionar indisponibilidades')
-        indisp = st.selectbox('Selecione o militar com indisponibilidades:', list(div_serv.values()))
-        st.date_input('Qual é o período?', [])
-        st.form_submit_button('Enviar')
+        mil_ind = st.selectbox('Selecione o militar com indisponibilidades:', list(div_serv.values()))
+        per_ind = st.date_input('Qual é o período?', [])
+        send_ind = st.form_submit_button('Enviar')
+        if send_ind:
+            st.session_state.indisponivel[mil_ind] = per_ind
+    st.write(st.session_state.indisponivel)
 
     with st.form('inicio_tabela'):
         with st.container():
