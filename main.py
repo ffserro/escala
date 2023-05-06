@@ -187,8 +187,8 @@ if mes != 0:
         tabela['I{}'.format(3+i)] = div_serv[1+i]
 
     with st.form('indisponibilidade'):
-        st.text('Indisponibilidades')
-        indisp = st.multiselect('Selecione os militares com indisponibilidades:', list(div_serv.values()))
+        st.text('Adicionar indisponibilidades')
+        indisp = st.select_box('Selecione o militar com indisponibilidades:', list(div_serv.values()))
         for i in indisp:
             st.date_input('Qual é o período?', [])
         st.form_submit_button('Enviar')
