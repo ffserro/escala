@@ -239,6 +239,6 @@ if mes != 0:
 
         st.write(workbook)
 
-        workbook.save('./tabela.xlsx')
+        workbook.save('tabela.xlsx')
 
-        st.download_button('Baixar tabela', data = './tabela.xlsx')
+        st.download_button('Baixar tabela', data = 'tabela.xlsx')
