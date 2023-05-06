@@ -222,9 +222,8 @@ if mes != 0:
     if troca:
         df[df.Data==de.strftime('%d/%m/%y')]['Nome'], df[df.Data==para.strftime('%d/%m/%y')]['Nome'] = df[df.Data==para.strftime('%d/%m/%y')]['Nome'], df[df.Data==de.strftime('%d/%m/%y')]['Nome']
         motivos.append('Troca entre os dias {} e {}. Motivo: {}'.format(de.strftime('%d/%m/%y'), para.strftime('%d/%m/%y'), motivo))
-        df
-    else:
-        df
+    
+    st.dataframe(df.sort_values(by='Data'))
 
     st.write(motivos)
 
