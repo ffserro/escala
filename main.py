@@ -193,6 +193,7 @@ if mes != 0:
                 v_1 = st.selectbox('Primeiro militar da escala vermelha', reversed(div_serv.values()))
             submit = st.form_submit_button('Gerar tabela')
     if submit:
+        st.experimental_rerun()
         st.session_state.generated = True
     
     if st.session_state:
