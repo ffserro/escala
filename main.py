@@ -228,11 +228,3 @@ if mes != 0:
     st.dataframe(st.session_state.df.sort_values(by='Data'))
 
     st.write(st.session_state.motivos)
-
-    '''for i in range(calendar.monthrange(ano, mes)[-1]):
-        tabela['D{}'.format(3+i)] = st.session_state.df.Nome.to_list()[i]
-
-    st.write(tabela['D3'].value)'''
-
-
-
