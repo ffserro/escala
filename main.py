@@ -232,7 +232,9 @@ if mes != 0:
     for i in range(calendar.monthrange(ano, mes)[-1]):
         tabela['D{}'.format(3+i)] = st.session_state.df.Nome.to_list()[i]
 
-    st.write(tabela['D3'].value)
+    workbook.save('tabela.xlsx')
+
+    st.download_button('Baixar tabela', data = 'tabela.xlsx', file_name = 'TABELA DE SERVICO - {}{}.xlsx'.format(["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"][mes-1].upper(), ano))
 
 
 
