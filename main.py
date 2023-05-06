@@ -22,14 +22,6 @@ st.title('Escala de serviço')
 meses = ['-', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
 mes = meses.index(st.selectbox('Escolha o mês da escala a ser visualizada: ', meses))
 
-
-
-
-
-
-
-
-
 if mes != 0:
 
     # Definições de data
@@ -140,7 +132,6 @@ if mes != 0:
             if weekday == 0:
                 j += y_offset
 
-
     def main(year, month, grid=False, fill=False):
         fig = plt.figure()
         ax = fig.add_subplot()
@@ -163,7 +154,6 @@ if mes != 0:
                 tick.label2.set_visible(False)
         month_calendar(ax, year, month, fill)
         st.pyplot(fig=fig)
-
 
     main(ano, mes, grid=True, fill=True)
 
@@ -238,6 +228,11 @@ if mes != 0:
     st.dataframe(st.session_state.df.sort_values(by='Data'))
 
     st.write(st.session_state.motivos)
+
+    for i in range(calendar.monthrange(ano, mes)[-1]):
+        tabela['D{}'.format(3+i)] = st.session_state.df.Nome.to_list()[i]
+
+    st.write(tabela['D1'].value)
 
 
 
