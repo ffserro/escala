@@ -227,13 +227,14 @@ if mes != 0:
                 while nm_ver[0] in st.session_state.indisponivel.keys():
                     while dia in st.session_state.indisponivel[nm_ver[0]]:
                         nm_ver = nm_ver[1:] + [nm_ver[0]]
+                        break
                 corrida.append(nm_ver[0])
                 nm_ver = nm_ver[1:] + [nm_ver[0]]
             if dia in preta:
                 while nm_pre[0] in st.session_state.indisponivel.keys():
-                    st.write(list(st.session_state.indisponivel.keys()), nm_pre[0], nm_pre)
                     while dia in st.session_state.indisponivel[nm_pre[0]]:
                         nm_pre = nm_pre[1:] + [nm_pre[0]]
+                        break
                 corrida.append(nm_pre[0])
                 nm_pre = nm_pre[1:] + [nm_pre[0]]
         if 'df' not in st.session_state:
