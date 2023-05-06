@@ -190,7 +190,7 @@ if mes != 0:
         st.session_state.indisponivel = {}
     with st.form('indisponibilidade'):
         st.title('Adicionar indisponibilidades')
-        mil_ind = st.selectbox('Selecione o militar com indisponibilidades:', list(div_serv.values()))
+        mil_ind = st.selectbox('Selecione o militar com indisponibilidades:', list(div_serv.values()), value = '-')
         per_ind = st.date_input('Qual é o período?', [])
         send_ind = st.form_submit_button('Enviar')
         if send_ind:
