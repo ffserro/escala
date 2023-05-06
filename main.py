@@ -229,4 +229,4 @@ if mes != 0:
         
         st.dataframe(st.session_state.df.sort_values(by='Data'))
 
-        st.write(st.session_state.motivos)
+        st.table(st.session_state.motivos)
