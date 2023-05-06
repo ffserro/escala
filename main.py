@@ -195,6 +195,7 @@ if mes != 0:
         send_ind = st.form_submit_button('Enviar')
         if send_ind:
             st.session_state.indisponivel[mil_ind] = [per_ind[0] + timedelta(n) for n in range((per_ind[-1] - per_ind[0]).days)]
+    st.write('Indisponíveis:')
     st.write(st.session_state.indisponivel)
 
     with st.form('inicio_tabela'):
