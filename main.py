@@ -22,6 +22,25 @@ st.title('Escala de serviço')
 meses = ['-', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
 mes = meses.index(st.selectbox('Escolha o mês da escala a ser visualizada: ', meses))
 
+# Divisão de serviço
+div_serv = {1:'CT Cespes',
+            2:'CT Cassias',
+            3:'CT Garcez',
+            4:'CT Diogo',
+            5:'CT Giovanni',
+            6:'CT(QC-CA) Damasceno',
+            7:'1T(IM) Sêrro',
+            8:'SO-AM Anderson Santos',
+            9:'SO-EL Alfredo',
+            10:'SO-MO Alvarez'}
+
+motivos = []
+
+
+
+
+
+
 if mes != 0:
 
     # Definições de data
@@ -159,18 +178,6 @@ if mes != 0:
 
     main(ano, mes, grid=True, fill=True)
 
-    # Divisão de serviço
-    div_serv = {1:'CT Cespes',
-                2:'CT Cassias',
-                3:'CT Garcez',
-                4:'CT Diogo',
-                5:'CT Giovanni',
-                6:'CT(QC-CA) Damasceno',
-                7:'1T(IM) Sêrro',
-                8:'SO-AM Anderson Santos',
-                9:'SO-EL Alfredo',
-                10:'SO-MO Alvarez'}
-
     workbook = load_workbook(filename='modelo.xlsx')
     tabela = workbook.active
 
@@ -218,7 +225,7 @@ if mes != 0:
         motivo = st.text_input('Motivo da troca')
         troca = st.button('Troca')
     
-    motivos = []
+    
     if troca:
         idxa = df.Data.to_list().index(de.strftime('%d/%m/%y'))
         idxb = df.Data.to_list().index(para.strftime('%d/%m/%y'))
