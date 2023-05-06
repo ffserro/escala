@@ -13,6 +13,8 @@ import pandas as pd
 import numpy as np
 
 from openpyxl import Workbook, load_workbook
+from tempfile import NamedTemporaryFile
+from io import BytesIO
 
 ano = 2023
 
