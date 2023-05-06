@@ -213,7 +213,7 @@ if mes != 0:
         if date(ano, mes, i+1) in preta:
             corrida.append(nm_pre[0])
             nm_pre = nm_pre[1:] + [nm_pre[0]]
-    if 'df' not in session_state:
+    if 'df' not in st.session_state:
         st.session_state.df = pd.DataFrame({'Data':[date(ano, mes, i+1).strftime('%d/%m/%y') for i in range(calendar.monthrange(ano, mes)[-1])], 'Dia':[['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'][date(ano, mes, i+1).weekday()] for i in range(calendar.monthrange(ano, mes)[-1])], 'Tab': [['P', 'V'][date(ano, mes, 1+i) in vermelha] for i in range(calendar.monthrange(ano, mes)[-1])], 'Nome': corrida})
 
     st.title('Trocas:')
@@ -225,7 +225,7 @@ if mes != 0:
             para = st.date_input('Para: ')
         motivo = st.text_input('Motivo da troca')
         troca = st.button('Troca')
-    if 'motivos' not in session_state:
+    if 'motivos' not in st.session_state:
         st.session_state.motivos = []
     if troca:
         idxa = st.session_state.df.Data.to_list().index(de.strftime('%d/%m/%y'))
