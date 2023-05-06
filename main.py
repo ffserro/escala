@@ -222,9 +222,13 @@ if mes != 0:
 
         for i in range(calendar.monthrange(ano, mes)[-1]):
             if date(ano, mes, i+1) in vermelha:
+                while date(ano, mes, i+1) in st.session_state.indisponivel[nm_ver[0]]:
+                    nm_ver = nm_ver[1:] + [nm_ver[0]]
                 corrida.append(nm_ver[0])
                 nm_ver = nm_ver[1:] + [nm_ver[0]]
             if date(ano, mes, i+1) in preta:
+                while date(ano, mes, i+1) in st.session_state.indisponivel[nm_ver[0]]:
+                    nm_pre = nm_pre[1:] + [nm_pre[0]]
                 corrida.append(nm_pre[0])
                 nm_pre = nm_pre[1:] + [nm_pre[0]]
         if 'df' not in st.session_state:
