@@ -231,6 +231,7 @@ if mes != 0:
                 nm_ver = nm_ver[1:] + [nm_ver[0]]
             if dia in preta:
                 if nm_pre[0] in st.session_state.indisponivel.keys():
+                    st.write(st.session_state.indisponivel.keys(), nm_pre[0])
                     while dia in st.session_state.indisponivel[nm_pre[0]]:
                         nm_pre = nm_pre[1:] + [nm_pre[0]]
                 corrida.append(nm_pre[0])
