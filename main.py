@@ -188,7 +188,7 @@ if mes != 0:
 
     with st.form('indisponibilidade'):
         st.text('Adicionar indisponibilidades')
-        indisp = st.select_box('Selecione o militar com indisponibilidades:', list(div_serv.values()))
+        indisp = st.selectbox('Selecione o militar com indisponibilidades:', list(div_serv.values()))
         st.date_input('Qual é o período?', [])
         st.form_submit_button('Enviar')
 
