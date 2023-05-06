@@ -210,6 +210,8 @@ if mes != 0:
     if submit:
         st.session_state.generated = True
     
+    if 'generated' not in st.session_state:
+        st.stop()
     if st.session_state.generated:
         corrida = []
 
