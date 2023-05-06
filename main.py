@@ -196,7 +196,7 @@ if mes != 0:
         if send_ind:
             st.session_state.indisponivel[mil_ind] = [per_ind[0] + timedelta(n) for n in range((per_ind[-1] - per_ind[0]).days)]
     
-    if 'indisponivel' in st.session_state:
+    if len(st.session_state.indisponivel) != 0:
         st.write('Indisponíveis:')
         for i in st.session_state.indisponivel:
             st.write('{} indisponível entre {} e {}.'.format(i, st.session_state.indisponivel[i][0].strftime('%d/%m'), st.session_state.indisponivel[i][-1].strftime('%d/%m')))
