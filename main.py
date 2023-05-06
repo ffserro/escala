@@ -237,6 +237,6 @@ if mes != 0:
         for i in range(calendar.monthrange(ano, mes)[-1]):
             tabela['D{}'.format(3+i)] = st.session_state.df.Nome[i]
 
-        workbook.save('tabela.xlsx')
+        workbook.save('./tabela.xlsx')
 
-        st.download_button('Baixar tabela', data = 'tabela.xlsx')
+        st.download_button('Baixar tabela', data = './tabela.xlsx')
