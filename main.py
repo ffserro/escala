@@ -186,6 +186,9 @@ if mes != 0:
     for i in range(len(div_serv)):
         tabela['I{}'.format(3+i)] = div_serv[1+i]
 
+    with st.form('indisponibilidade'):
+        st.text('Indisponibilidades')
+
     with st.form('inicio_tabela'):
         with st.container():
             col1, col2 = st.columns(2)
