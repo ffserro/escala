@@ -222,15 +222,16 @@ if mes != 0:
         nm_pre = list(div_serv.values())[list(div_serv.values()).index(p_1):] + list(div_serv.values())[:list(div_serv.values()).index(p_1)]
 
         for i in range(calendar.monthrange(ano, mes)[-1]):
-            if date(ano, mes, i+1) in vermelha:
+            dia = date(ano, mes, i+1)
+            if dia in vermelha:
                 if nm_ver[0] in st.session_state.indisponivel:
-                    while date(ano, mes, i+1) in st.session_state.indisponivel[nm_ver[0]]:
+                    while dia in st.session_state.indisponivel[nm_ver[0]]:
                         nm_ver = nm_ver[1:] + [nm_ver[0]]
                 corrida.append(nm_ver[0])
                 nm_ver = nm_ver[1:] + [nm_ver[0]]
-            if date(ano, mes, i+1) in preta:
+            if dia in preta:
                 if nm_pre[0] in st.session_state.indisponivel:
-                    while date(ano, mes, i+1) in st.session_state.indisponivel[nm_pre[0]]:
+                    while dia in st.session_state.indisponivel[nm_pre[0]]:
                         nm_pre = nm_pre[1:] + [nm_pre[0]]
                 corrida.append(nm_pre[0])
                 nm_pre = nm_pre[1:] + [nm_pre[0]]
