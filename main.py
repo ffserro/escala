@@ -233,3 +233,10 @@ if mes != 0:
         st.dataframe(st.session_state.df.sort_values(by='Data'))
 
         st.table(st.session_state.motivos)
+
+        for i in range(calendar.monthrange(ano, mes)[-1]):
+            tabela['D{}'.format(3+i)] = st.session_state.df[i]
+
+        workbook.save('tabela.xlsx')
+
+        st.download_button('Baixar tabela', data = 'tabela.xlsx')
