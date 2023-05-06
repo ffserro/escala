@@ -235,7 +235,7 @@ if mes != 0:
         st.table(st.session_state.motivos)
 
         for i in range(calendar.monthrange(ano, mes)[-1]):
-            tabela['D{}'.format(3+i)] = st.session_state.df[i]
+            tabela['D{}'.format(3+i)] = st.session_state.df.Nome[i]
 
         workbook.save('tabela.xlsx')
 
