@@ -190,16 +190,17 @@ if mes != 0:
         st.session_state.indisponivel = {}
     with st.form('indisponibilidade'):
         st.title('Adicionar indisponibilidades')
-        mil_ind = st.selectbox('Selecione o militar com indisponibilidades:', ['-'] + list(div_serv.values()))
-        per_ind = st.date_input('Qual é o período?', [])
+        mil_ind = st.selectbox('Militar com indisponibilidade:', ['-'] + list(div_serv.values()))
+        per_ind = st.date_input('Período:', [])
+        mot_ind = st.selectbox('Motivo:', options=['Férias', 'Dispensa médica', 'Destaque', 'Viagem', 'Luto', 'Desembarque'])
         send_ind = st.form_submit_button('Enviar')
         if send_ind:
-            st.session_state.indisponivel[mil_ind] = [per_ind[0] + timedelta(n) for n in range((per_ind[-1] - per_ind[0]).days+1)]
+            st.session_state.indisponivel[mil_ind] = [mot_ind] + [per_ind[0] + timedelta(n) for n in range((per_ind[-1] - per_ind[0]).days+1)]
     
     if len(st.session_state.indisponivel) != 0:
         st.write('Indisponíveis:')
         for i in st.session_state.indisponivel:
-            st.write('{} indisponível entre {} e {}.'.format(i, st.session_state.indisponivel[i][0].strftime('%d/%m'), st.session_state.indisponivel[i][-1].strftime('%d/%m')))
+            st.write('{} indisponível entre {} e {} por motivo de {}.'.format(i, st.session_state.indisponivel[i][1].strftime('%d/%m'), st.session_state.indisponivel[i][-1].strftime('%d/%m'), st.session_state.indisponivel[i][0].strftime('%d/%m')))
 
     with st.form('inicio_tabela'):
         with st.container():
