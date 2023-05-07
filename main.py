@@ -51,7 +51,7 @@ if mes != 0:
         if i.weekday() == 1:
             vermelha.append(i - timedelta(1))
             preta.remove(i - timedelta(1))
-        if i.weekday == 3:
+        if i.weekday() == 3:
             vermelha.append(i + timedelta(1))
             preta.remove(i + timedelta(1))
 
