@@ -276,7 +276,7 @@ if mes != 0:
         for i in range(calendar.monthrange(ano, mes)[-1]):
             tabela['D{}'.format(3+i)] = st.session_state.df.Nome[i]
 
-        for i in range(3, calendar.monthrange(ano, mes)[-1]+4):
+        for i in range(3, calendar.monthrange(ano, mes)[-1]+3):
             for j in st.session_state.motivos:
                 if tabela['A{}'.format(i)].value in j:
                     tabela['E{}'.format(i)] = '*'
