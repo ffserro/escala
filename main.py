@@ -198,10 +198,9 @@ if mes != 0:
             st.session_state.indisponivel[mil_ind] = [mot_ind] + [per_ind[0] + timedelta(n) for n in range((per_ind[-1] - per_ind[0]).days+1)]
     
     if len(st.session_state.indisponivel) != 0:
-        st.write(st.session_state.indisponivel)
         st.write('Indisponíveis:')
         for i in st.session_state.indisponivel:
-            st.write('{} indisponível entre {} e {} por motivo de {}.'.format(i, st.session_state.indisponivel[i][1].strftime('%d/%m'), st.session_state.indisponivel[i][-1].strftime('%d/%m'), st.session_state.indisponivel[i][0].strftime('%d/%m')))
+            st.write('{} indisponível entre {} e {} por motivo de {}.'.format(i, st.session_state.indisponivel[i][1].strftime('%d/%m'), st.session_state.indisponivel[i][-1].strftime('%d/%m'), st.session_state.indisponivel[i][0]))
 
     with st.form('inicio_tabela'):
         with st.container():
