@@ -276,6 +276,10 @@ if mes != 0:
         for i in range(calendar.monthrange(ano, mes)[-1]):
             tabela['D{}'.format(3+i)] = st.session_state.df.Nome[i]
 
+        for i in range(3, calendar.monthrange(ano, mes)[-1]+4):
+            for j in st.session_state.motivos:
+                if tabela['A{}'.format(i)] in j:
+                    tabela['E{}'.format(i)] = '*'
 
         for i in range(len(st.session_state.indisponivel)):
             tabela['F{}'.format(19+i)] = '{} indisponível entre {} e {} por motivo de {}.'.format(list(st.session_state.indisponivel.keys())[i], list(st.session_state.indisponivel.values())[i][1].strftime('%d/%m'), list(st.session_state.indisponivel.values())[i][-1].strftime('%d/%m'), list(st.session_state.indisponivel.values())[i][0])
