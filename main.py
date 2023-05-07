@@ -58,8 +58,12 @@ if mes != 0:
 
     licpag = st.date_input('Qual é o dia da Licença Pagamento? ',value=min(preta), min_value=prm, max_value=ult, key='licpag')
 
-    vermelha.append(licpag)
-    preta.remove(licpag)
+    try:
+        preta.remove(licpag)
+        vermelha.append(licpag)
+    except:
+        pass
+    
 
     vermelha.sort()
 
