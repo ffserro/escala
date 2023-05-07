@@ -47,6 +47,15 @@ if mes != 0:
         if single_date not in vermelha:
             preta.append(single_date)
 
+    for i in vermelha:
+        if i.weekday() == 1:
+            vermelha.append(i - timedelta(1))
+            preta.remove(i - timedelta(1))
+        if i.weekday == 3:
+            vermelha.append(i + timedelta(1))
+            preta.remove(i + timedelta(1))
+
+
     licpag = st.date_input('Qual é o dia da Licença Pagamento? ',value=min(preta), min_value=prm, max_value=ult, key='licpag')
 
     vermelha.append(licpag)
