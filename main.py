@@ -291,4 +291,4 @@ if mes != 0:
             workbook.save(tmp.name)
             data = BytesIO(tmp.read())
 
-        st.download_button('Baixar tabela', data=data, mime='xlsx', file_name='tabela.xlsx')
+        st.download_button('Baixar tabela', data=data, mime='xlsx', file_name='TABELA_SERVICO_{}{}.xlsx'.format(['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'][mes], ano))
