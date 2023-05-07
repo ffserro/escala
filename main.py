@@ -278,7 +278,7 @@ if mes != 0:
 
         for i in range(3, calendar.monthrange(ano, mes)[-1]+4):
             for j in st.session_state.motivos:
-                if tabela['A{}'.format(i)] in j:
+                if tabela['A{}'.format(i)].values in j:
                     tabela['E{}'.format(i)] = '*'
 
         for i in range(len(st.session_state.indisponivel)):
