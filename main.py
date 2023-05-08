@@ -21,7 +21,7 @@ ano = 2023
 
 # Título e Prompts
 
-st.markdown("<img style='display: block; margin-left: auto; margin-right: auto; width:40%;' src='https://drive.google.com/uc?id=1dJLfNswVTrejtgGb_4eFnGejK4rOMl2l&export=download' alt='ComGptPatNavSSE' width='500'>", unsafe_allow_html=True)
+st.markdown("<img style='display: block; margin-left: auto; margin-right: auto; width:40%;' src='logo.png' alt='ComGptPatNavSSE' width='500'>", unsafe_allow_html=True)
 
 st.markdown("<h1 style='text-align: center;'>Escala de serviço generator</h1>", unsafe_allow_html=True)
 
