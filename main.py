@@ -22,7 +22,7 @@ ano = 2023
 
 st.markdown("<img style='display: block; margin-left: auto; margin-right: auto; width:40%;' src='https://drive.google.com/uc?id=1dJLfNswVTrejtgGb_4eFnGejK4rOMl2l&export=download' alt='ComGptPatNavSSE' width='500'>", unsafe_allow_html=True)
 
-st.title('Escala de serviço generator')
+st.markdown("<h1 style='text-align: center;'>Escala de serviço generator</h1>", unsafe_allow_html=True)
 
 meses = ['-', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
 mes = meses.index(st.selectbox('Escolha o mês da escala a ser visualizada: ', meses))
