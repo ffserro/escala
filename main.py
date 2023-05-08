@@ -238,31 +238,23 @@ if mes != 0:
         nm_ver = list(reversed(div_serv.values()))[list(reversed(div_serv.values())).index(v_1):] + list(reversed(div_serv.values()))[:list(reversed(div_serv.values())).index(v_1)]
         nm_pre = list(div_serv.values())[list(div_serv.values()).index(p_1):] + list(div_serv.values())[:list(div_serv.values()).index(p_1)]
 
-        def escalar(dia, nom, ind):
-            if nom[0] in ind.keys():
-                if dia in ind[nom[0]]:
-                    nom = nom[1:] + [nom[0]]
-                    escalar()
-            return nom[0]
-
+        st.write(st.session_state.indisponivel)
 
         for i in range(calendar.monthrange(ano, mes)[-1]):
             dia = date(ano, mes, i+1)
             if dia in vermelha:
-                '''while nm_ver[0] in st.session_state.indisponivel.keys():
+                while nm_ver[0] in st.session_state.indisponivel.keys():
                     while dia in st.session_state.indisponivel[nm_ver[0]]:
                         nm_ver = nm_ver[1:] + [nm_ver[0]]
                         break
-                corrida.append(nm_ver[0])'''
-                corrida.append(escalar(dia, nm_ver, st.session_state.indisponivel))
+                corrida.append(nm_ver[0])
                 nm_ver = nm_ver[1:] + [nm_ver[0]]
             if dia in preta:
-                '''while nm_pre[0] in st.session_state.indisponivel.keys():
+                while nm_pre[0] in st.session_state.indisponivel.keys():
                     while dia in st.session_state.indisponivel[nm_pre[0]]:
                         nm_pre = nm_pre[1:] + [nm_pre[0]]
                         break
-                corrida.append(nm_pre[0])'''
-                corrida.append(escalar(dia, nm_pre, st.session_state.indisponivel))
+                corrida.append(nm_pre[0])
                 nm_pre = nm_pre[1:] + [nm_pre[0]]
         if 'df' not in st.session_state:
             st.session_state.df = pd.DataFrame({'Data':[date(ano, mes, i+1).strftime('%d/%m/%y') for i in range(calendar.monthrange(ano, mes)[-1])], 'Dia':[['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'][date(ano, mes, i+1).weekday()] for i in range(calendar.monthrange(ano, mes)[-1])], 'Tab': [['P', 'V'][date(ano, mes, 1+i) in vermelha] for i in range(calendar.monthrange(ano, mes)[-1])], 'Nome': corrida})
