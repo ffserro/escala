@@ -24,6 +24,14 @@ st.markdown("<img style='display: block; margin-left: auto; margin-right: auto; 
 
 st.markdown("<h1 style='text-align: center;'>Escala de serviço generator</h1>", unsafe_allow_html=True)
 
+play = st.button('Play' )
+if play:
+    st.markdown("""
+    <audio controls autoplay>
+        <source src="vinheta.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>""", unsafe_allow_html=True)
+
 meses = ['-', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
 mes = meses.index(st.selectbox('Escolha o mês da escala a ser visualizada: ', meses))
 
