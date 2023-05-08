@@ -242,6 +242,10 @@ if mes != 0:
         for j in st.session_state.indisponivel.values():
             for i in j[1:]:
                 datas_indisp[i.strftime('%d/%m/%y')] = []
+        for i in st.session_state.indisponivel:
+            for j in st.session_state.indisponivel[i][1:]:
+                datas_indisp[j.strftime('%d/%m/%y')].append(i)
+
 
         st.write(datas_indisp)
 
