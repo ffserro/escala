@@ -240,6 +240,10 @@ if mes != 0:
 
         st.write(st.session_state.indisponivel)
 
+        datas_indisp = {i:[] for i in j[1:] for j in list(st.session_state.indiponivel.values())}
+
+        st.write(datas_indisp)
+
         for i in range(calendar.monthrange(ano, mes)[-1]):
             dia = date(ano, mes, i+1)
             if dia in vermelha:
