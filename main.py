@@ -20,9 +20,9 @@ ano = 2023
 
 # Título e Prompts
 
-st.image('logo.jpeg')
+st.image('logo.png')
 
-st.title('Escala de serviço')
+st.title('Escala de serviço generator')
 
 meses = ['-', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
 mes = meses.index(st.selectbox('Escolha o mês da escala a ser visualizada: ', meses))
