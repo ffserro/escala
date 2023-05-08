@@ -20,7 +20,7 @@ ano = 2023
 
 # Título e Prompts
 
-st.image('logo.png')
+st.image('logo.png', width=50)
 
 st.title('Escala de serviço generator')
 
