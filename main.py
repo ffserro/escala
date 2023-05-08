@@ -298,11 +298,13 @@ if mes != 0:
             workbook.save(tmp.name)
             data = BytesIO(tmp.read())
 
-        download = st.download_button('Baixar tabela', data=data, mime='xlsx', file_name='TABELA_SERVICO_{}{}.xlsx'.format(['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'][mes], ano))
-
-        if download:
+        def vinheta():
             st.markdown("""
                 <audio controls autoplay>
                     <source src="https://drive.google.com/u/0/uc?id=1MXL337mOpzIXhc62oG6fZb6FElARu8aj&export=download" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>""", unsafe_allow_html=True)
+
+        st.download_button('Baixar tabela', data=data, mime='xlsx', file_name='TABELA_SERVICO_{}{}.xlsx'.format(['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'][mes], ano), on_click=vinheta())
+
+        
