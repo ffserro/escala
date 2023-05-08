@@ -238,8 +238,6 @@ if mes != 0:
         nm_ver = list(reversed(div_serv.values()))[list(reversed(div_serv.values())).index(v_1):] + list(reversed(div_serv.values()))[:list(reversed(div_serv.values())).index(v_1)]
         nm_pre = list(div_serv.values())[list(div_serv.values()).index(p_1):] + list(div_serv.values())[:list(div_serv.values()).index(p_1)]
 
-        st.write(st.session_state.indisponivel)
-
         datas_indisp = {i:[] for i in j[1:] for j in list(st.session_state.indiponivel.values())}
 
         st.write(datas_indisp)
