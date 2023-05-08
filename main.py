@@ -258,9 +258,9 @@ if mes != 0:
                         break'''
                 if dia.strftime('%d/%m/%y') in datas_indisp:
                     while nm_ver[0] in datas_indisp[dia.strftime('%d/%m/%y')]:
-                        nm_ver = nm_ver[1:] + [nm_ver[0]]
+                        nm_ver = nm_ver[1:] + nm_ver[:1]
                 corrida.append(nm_ver[0])
-                nm_ver = nm_ver[1:] + [nm_ver[0]]
+                nm_ver = nm_ver[1:] + nm_ver[:1]
             if dia in preta:
                 '''while nm_pre[0] in st.session_state.indisponivel.keys():
                     while dia in st.session_state.indisponivel[nm_pre[0]]:
@@ -268,9 +268,12 @@ if mes != 0:
                         break'''
                 if dia.strftime('%d/%m/%y') in datas_indisp:
                     while nm_pre[0] in datas_indisp[dia.strftime('%d/%m/%y')]:
-                        nm_pre[1:] + [nm_pre[0]]
+                        nm_pre[1:] + nm_pre[:1]
                 corrida.append(nm_pre[0])
-                nm_pre = nm_pre[1:] + [nm_pre[0]]
+                nm_pre = nm_pre[1:] + nm_pre[:1]
+
+
+
         if 'df' not in st.session_state:
             st.session_state.df = pd.DataFrame({'Data':[date(ano, mes, i+1).strftime('%d/%m/%y') for i in range(calendar.monthrange(ano, mes)[-1])], 'Dia':[['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM'][date(ano, mes, i+1).weekday()] for i in range(calendar.monthrange(ano, mes)[-1])], 'Tab': [['P', 'V'][date(ano, mes, 1+i) in vermelha] for i in range(calendar.monthrange(ano, mes)[-1])], 'Nome': corrida})
 
