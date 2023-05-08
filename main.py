@@ -248,9 +248,6 @@ if mes != 0:
             for j in st.session_state.indisponivel[i][1:]:
                 datas_indisp[j.strftime('%d/%m/%y')].append(i)
 
-
-        st.write(datas_indisp)
-
         for i in range(calendar.monthrange(ano, mes)[-1]):
             dia = date(ano, mes, i+1)
             if dia in vermelha:
