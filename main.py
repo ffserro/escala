@@ -252,17 +252,23 @@ if mes != 0:
         for i in range(calendar.monthrange(ano, mes)[-1]):
             dia = date(ano, mes, i+1)
             if dia in vermelha:
-                while nm_ver[0] in st.session_state.indisponivel.keys():
+                '''while nm_ver[0] in st.session_state.indisponivel.keys():
                     while dia in st.session_state.indisponivel[nm_ver[0]]:
                         nm_ver = nm_ver[1:] + [nm_ver[0]]
-                        break
+                        break'''
+                if dia.strftime('%d/%m/%y') in datas_indisp:
+                    while nm_ver[0] in datas_indisp[dia.strftime('%d/%m/%y')]:
+                        nm_ver = nm_ver[1:] + [nm_ver[0]]
                 corrida.append(nm_ver[0])
                 nm_ver = nm_ver[1:] + [nm_ver[0]]
             if dia in preta:
-                while nm_pre[0] in st.session_state.indisponivel.keys():
+                '''while nm_pre[0] in st.session_state.indisponivel.keys():
                     while dia in st.session_state.indisponivel[nm_pre[0]]:
                         nm_pre = nm_pre[1:] + [nm_pre[0]]
-                        break
+                        break'''
+                if dia.strftime('%d/%m/%y') in datas_indisp:
+                    while nm_pre[0] in datas_indisp[dia.strftime('%d/%m/%y')]:
+                        nm_pre[1:] + [nm_pre[0]]
                 corrida.append(nm_pre[0])
                 nm_pre = nm_pre[1:] + [nm_pre[0]]
         if 'df' not in st.session_state:
