@@ -17,7 +17,6 @@ from openpyxl.styles import DEFAULT_FONT
 from tempfile import NamedTemporaryFile
 from io import BytesIO
 
-DEFAULT_FONT.name = "Times New Roman"
 ano = 2023
 
 # Título e Prompts
@@ -190,6 +189,7 @@ if mes != 0:
                 10:'SO-MO Alvarez'}
 
     workbook = load_workbook(filename='modelo.xlsx')
+    DEFAULT_FONT.name = "Times New Roman"
     tabela = workbook.active
 
     for i in range(calendar.monthrange(ano, mes)[-1]):
