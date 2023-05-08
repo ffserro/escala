@@ -20,7 +20,7 @@ ano = 2023
 
 # Título e Prompts
 
-st.markdown('<img src="./logo.png" alt="ComGptPatNavSSE">', unsafe_allow_html=True)
+st.markdown('<img src="logo.png" alt="ComGptPatNavSSE">', unsafe_allow_html=True)
 
 st.title('Escala de serviço generator')
 
