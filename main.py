@@ -240,7 +240,7 @@ if mes != 0:
 
         datas_indisp = {}
         for j in st.session_state.indisponivel.values():
-            for i in j[:1]:
+            for i in j[1:]:
                 datas_indisp[i] = []
 
         st.write(datas_indisp)
