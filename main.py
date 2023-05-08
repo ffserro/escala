@@ -19,6 +19,9 @@ from io import BytesIO
 ano = 2023
 
 # Título e Prompts
+
+st.image('logo.jpeg')
+
 st.title('Escala de serviço')
 
 meses = ['-', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
