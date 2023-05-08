@@ -268,7 +268,7 @@ if mes != 0:
                         break'''
                 if dia.strftime('%d/%m/%y') in datas_indisp:
                     while nm_pre[0] in datas_indisp[dia.strftime('%d/%m/%y')]:
-                        nm_pre[1:] + nm_pre[:1]
+                        nm_pre = nm_pre[1:] + nm_pre[:1]
                 corrida.append(nm_pre[0])
                 nm_pre = nm_pre[1:] + nm_pre[:1]
 
