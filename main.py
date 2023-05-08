@@ -13,9 +13,11 @@ import pandas as pd
 import numpy as np
 
 from openpyxl import Workbook, load_workbook
+from openpyxl.styles import DEFAULT_FONT
 from tempfile import NamedTemporaryFile
 from io import BytesIO
 
+DEFAULT_FONT.name = "Times New Roman"
 ano = 2023
 
 # Título e Prompts
@@ -252,20 +254,12 @@ if mes != 0:
         for i in range(calendar.monthrange(ano, mes)[-1]):
             dia = date(ano, mes, i+1)
             if dia in vermelha:
-                '''while nm_ver[0] in st.session_state.indisponivel.keys():
-                    while dia in st.session_state.indisponivel[nm_ver[0]]:
-                        nm_ver = nm_ver[1:] + [nm_ver[0]]
-                        break'''
                 if dia.strftime('%d/%m/%y') in datas_indisp:
                     while nm_ver[0] in datas_indisp[dia.strftime('%d/%m/%y')]:
                         nm_ver = nm_ver[1:] + nm_ver[:1]
                 corrida.append(nm_ver[0])
                 nm_ver = nm_ver[1:] + nm_ver[:1]
             if dia in preta:
-                '''while nm_pre[0] in st.session_state.indisponivel.keys():
-                    while dia in st.session_state.indisponivel[nm_pre[0]]:
-                        nm_pre = nm_pre[1:] + [nm_pre[0]]
-                        break'''
                 if dia.strftime('%d/%m/%y') in datas_indisp:
                     while nm_pre[0] in datas_indisp[dia.strftime('%d/%m/%y')]:
                         nm_pre = nm_pre[1:] + nm_pre[:1]
