@@ -183,16 +183,13 @@ if mes != 0:
     main(ano, mes, grid=True, fill=True)
 
     # Divisão de serviço
-    div_serv = {1:'CT Cespes',
-                2:'CT Cassias',
-                3:'CT Garcez',
-                4:'CT Diogo',
-                5:'CT Giovanni',
-                6:'CT(QC-CA) Damasceno',
-                7:'1T(IM) Sêrro',
-                8:'SO-AM Anderson Santos',
-                9:'SO-EL Alfredo',
-                10:'SO-MO Alvarez'}
+    div_serv = {1:'CT Tarle',
+                2:'CT Damasceno',
+                3:'CT Belmonte',
+                4:'CT(IM) Sêrro',
+                5:'1T Gianluca',
+                6:'2T(IM) Soares Costa',
+                7:'SO-MO Alvarez'}
 
     workbook = load_workbook(filename='modelo.xlsx')
     DEFAULT_FONT.name = "Times New Roman"
