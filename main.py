@@ -19,7 +19,7 @@ from io import BytesIO
 import base64
 
 
-ano = 2023
+ano = 2024
 
 # Título e Prompts
 
