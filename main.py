@@ -213,7 +213,7 @@ if mes != 0:
         st.title('Adicionar indisponibilidades')
         mil_ind = st.selectbox('Militar com indisponibilidade:', ['-'] + list(div_serv.values()))
         per_ind = st.date_input('Período:', [], min_value=prm, max_value=ult)
-        mot_ind = st.selectbox('Motivo:', options=['Férias', 'Dispensa médica', 'Destaque', 'Viagem', 'Luto', 'Desembarque'])
+        mot_ind = st.selectbox('Motivo:', options=['Férias', 'Dispensa médica', 'Destaque', 'Viagem', 'Luto', 'Desembarque', 'Paternidade'])
         send_ind = st.form_submit_button('Enviar')
         if send_ind:
             st.session_state.indisponivel[mil_ind] = [mot_ind] + [per_ind[0] + timedelta(n) for n in range((per_ind[-1] - per_ind[0]).days+1)]
