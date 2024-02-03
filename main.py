@@ -70,9 +70,11 @@ if mes != 0:
     if is_roxa:
         roxa = st.date_input('Período de escala roxa:', [], min_value=prm, max_value=ult)
     
-    for i in roxa:
-        preta.remove(i)
-        vermelha.remove(i)
+    try:
+        for i in roxa:
+            preta.remove(i)
+            vermelha.remove(i)
+    except: pass
 
     licpag = st.date_input('Qual é o dia da Licença Pagamento? ',value=min(preta), min_value=prm, max_value=ult, key='licpag')
 
@@ -134,8 +136,11 @@ if mes != 0:
     def check_color_day(year, month, day, weekday):
         if date(year, month, day) in vermelha:
             return "red"
-        elif date(year, month, day) in roxa:
-            return "purple"
+        try:
+            if date(year, month, day) in roxa:
+                return "purple"
+        except:
+            pass
         return "black"
 
 
