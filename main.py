@@ -67,6 +67,9 @@ if mes != 0:
 
     is_roxa = st.checkbox('Tem escala roxa?')
 
+    if is_roxa:
+        roxa = st.date_input('Período:', [], min_value=prm, max_value=ult)
+
     licpag = st.date_input('Qual é o dia da Licença Pagamento? ',value=min(preta), min_value=prm, max_value=ult, key='licpag')
 
     try:
