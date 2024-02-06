@@ -78,7 +78,7 @@ if mes != 0:
 
     licpag = st.date_input('Qual é o dia da Licença Pagamento? ',value=min(preta), min_value=prm, max_value=ult, key='licpag')
 
-    carnaval = st.date_input('Qual é o período do Carnaval? ',value=[min(preta)], min_value=prm, max_value=ult, key='carnaval')
+    carnaval = st.date_input('Qual é o período do Carnaval? ',value=[], min_value=prm, max_value=ult, key='carnaval')
 
     try:
         preta.remove(licpag)
