@@ -88,8 +88,11 @@ if mes != 0:
     
     for single_date in (prm + timedelta(n) for n in range(calendar.monthrange(ano,mes)[-1])):
         if single_date >= min(carnaval) and single_date <= max(carnaval):
-            preta.remove(single_date)
-            vermelha.append(single_date)
+            try:
+                preta.remove(single_date)
+                vermelha.append(single_date)
+            except:
+                pass
 
     vermelha.sort()
 
