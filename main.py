@@ -86,6 +86,14 @@ if mes != 0:
     except:
         pass
     
+    for data in carnaval:
+        try:
+            preta.remove(data)
+            if data not in vermelha:
+                vermelha.append(data)
+        except:
+            pass
+
 
     vermelha.sort()
 
