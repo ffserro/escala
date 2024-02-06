@@ -88,11 +88,8 @@ if mes != 0:
     
     for data in preta:
         if data >= min(carnaval) and data <= max(carnaval):
-            try:
-                preta.remove(data)
-                vermelha.append(data)
-            except:
-                pass
+            preta.remove(data)
+            vermelha.append(data)
 
     vermelha.sort()
 
