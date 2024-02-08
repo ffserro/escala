@@ -207,13 +207,14 @@ if mes != 0:
     main(ano, mes, grid=True, fill=True)
 
     # Divisão de serviço
-    div_serv = {1:'CT Tarle',
-                2:'CT Damasceno',
-                3:'CT Belmonte',
-                4:'CT(IM) Sêrro',
-                5:'1T Gianluca',
-                6:'2T(IM) Soares Costa',
-                7:'SO-MO Alvarez'}
+    div_serv = {1:'CT Luz',
+                2:'CT Tarle',
+                3:'CT Damasceno',
+                4:'CT Belmonte',
+                5:'CT(IM) Sêrro',
+                6:'1T Gianluca',
+                7:'2T(IM) Soares Costa',
+                8:'SO-MO Alvarez'}
 
     workbook = load_workbook(filename='modelo.xlsx')
     DEFAULT_FONT.name = "Times New Roman"
@@ -237,7 +238,7 @@ if mes != 0:
         st.title('Adicionar indisponibilidades')
         mil_ind = st.selectbox('Militar com indisponibilidade:', ['-'] + list(div_serv.values()))
         per_ind = st.date_input('Período:', [], min_value=prm, max_value=ult)
-        mot_ind = st.selectbox('Motivo:', options=['Férias', 'Dispensa médica', 'Destaque', 'Viagem', 'Luto', 'Desembarque', 'Paternidade'])
+        mot_ind = st.selectbox('Motivo:', options=['Férias', 'Dispensa médica', 'Destaque', 'Viagem', 'Luto', 'Desembarque', 'Paternidade', 'Qualificando'])
         send_ind = st.form_submit_button('Enviar')
         if send_ind:
             st.session_state.indisponivel[mil_ind] = [mot_ind] + [per_ind[0] + timedelta(n) for n in range((per_ind[-1] - per_ind[0]).days+1)]
