@@ -78,7 +78,7 @@ if mes != 0:
 
     licpag = st.date_input('Qual é o dia da Licença Pagamento? ',value=min(preta), min_value=prm, max_value=ult, key='licpag')
 
-    carnaval = st.date_input('Qual é o período do Carnaval? ',value=[], min_value=prm, max_value=ult, key='carnaval')
+    #carnaval = st.date_input('Qual é o período do Carnaval? ',value=[], min_value=prm, max_value=ult, key='carnaval')
 
     try:
         preta.remove(licpag)
@@ -86,13 +86,13 @@ if mes != 0:
     except:
         pass
     
-    for single_date in (prm + timedelta(n) for n in range(calendar.monthrange(ano,mes)[-1])):
-        if single_date >= min(carnaval) and single_date <= max(carnaval):
-            try:
-                preta.remove(single_date)
-                vermelha.append(single_date)
-            except:
-                pass
+    # for single_date in (prm + timedelta(n) for n in range(calendar.monthrange(ano,mes)[-1])):
+    #     if single_date >= min(carnaval) and single_date <= max(carnaval):
+    #         try:
+    #             preta.remove(single_date)
+    #             vermelha.append(single_date)
+    #         except:
+    #             pass
 
     vermelha.sort()
 
