@@ -212,7 +212,7 @@ if mes != 0:
                 3:'CT Damasceno',
                 4:'CT Belmonte',
                 5:'CT(IM) Sêrro',
-                6:'1T Agabel'
+                6:'1T Agabel',
                 7:'1T Gianluca',
                 8:'2T(IM) Soares Costa',
                 9:'SO-MO Alvarez'}
