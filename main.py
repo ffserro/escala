@@ -57,10 +57,10 @@ if mes != 0:
         if single_date not in vermelha:
             preta.append(single_date)
 
-    for i in range(len(vermelha)-1):
-        if vermelha[i] + timedelta(2) in vermelha:
-            vermelha.append(vermelha[i] + timedelta(1))
-            preta.remove(vermelha[i] + timedelta(1))
+    for i in vermelha:
+        if i + timedelta(2) in vermelha:
+            vermelha.append(i + timedelta(1))
+            preta.remove(i + timedelta(1))
 
         # if i.weekday() == 1:
         #     vermelha.append(i - timedelta(1))
