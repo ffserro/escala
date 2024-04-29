@@ -89,6 +89,11 @@ if mes != 0:
         vermelha.append(licpag)
     except:
         pass
+
+    for i in vermelha:
+        if i + timedelta(2) in vermelha:
+            vermelha.append(i + timedelta(1))
+            preta.remove(i + timedelta(1))
     
     # for single_date in (prm + timedelta(n) for n in range(calendar.monthrange(ano,mes)[-1])):
     #     if single_date >= min(carnaval) and single_date <= max(carnaval):
