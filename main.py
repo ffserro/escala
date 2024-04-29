@@ -58,7 +58,7 @@ if mes != 0:
             preta.append(single_date)
 
     for i in range(len(vermelha)-1):
-        if vermelha[i+1] - vermelha[i] == timedelta(2):
+        if vermelha[i] + timedelta(2) in vermelha:
             vermelha.append(vermelha[i] + timedelta(1))
             preta.remove(vermelha[i] + timedelta(1))
 
