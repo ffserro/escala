@@ -225,9 +225,10 @@ if mes != 0:
                 4:'CT Belmonte',
                 5:'CT(IM) Sêrro',
                 6:'1T Agabel',
-                7:'1T Gianluca',
-                8:'2T(IM) Soares Costa',
-                9:'SO-MO Alvarez'}
+                7:'1T Duarte',
+                8:'1T Gianluca',
+                9:'2T(IM) Soares Costa',
+                10:'SO-MO Alvarez'}
 
     workbook = load_workbook(filename='modelo.xlsx')
     DEFAULT_FONT.name = "Times New Roman"
