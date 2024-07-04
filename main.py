@@ -43,7 +43,7 @@ if mes != 0:
     vermelha = []
     preta = []
 
-    feriados = holidays.Brazil()['{}-01-01'.format(ano): '{}-12-31'.format(ano)] + [f'{ano}-07-09']
+    feriados = holidays.Brazil()['{}-01-01'.format(ano): '{}-12-31'.format(ano)] + [date(ano,7,9)]
 
     for single_date in (prm + timedelta(n) for n in range(calendar.monthrange(ano,mes)[-1])):
         if single_date.weekday() in (5,6):
