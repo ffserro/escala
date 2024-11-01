@@ -364,6 +364,7 @@ if mes != 0:
                         <source src="data:audio/mp3;base64,{b64}" type="audio/mp3">
                     </audio>""", unsafe_allow_html=True)
 
-        st.download_button('Baixar tabela', data=data, mime='xlsx', file_name='TABELA_SERVICO_{}{}.xlsx'.format(['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'][mes-1], ano), on_click=vinheta())
+        if st.download_button('Baixar tabela', data=data, mime='xlsx', file_name='TABELA_SERVICO_{}{}.xlsx'.format(['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'][mes-1], ano)):#, on_click=vinheta())
+            vinheta()
 
         
