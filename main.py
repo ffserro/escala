@@ -292,7 +292,7 @@ if mes != 0:
                 datas_indisp[i.strftime('%d/%m/%y')] = []
         for i in st.session_state.indisponivel:
             for j in st.session_state.indisponivel[i][1:]:
-                datas_indisp[j.strftime('%d/%m/%y')].append(i)
+                datas_indisp[j.strftime('%d/%m/%y')].append(i[:-1])
 
         for i in range(calendar.monthrange(ano, mes)[-1]):
             dia = date(ano, mes, i+1)
