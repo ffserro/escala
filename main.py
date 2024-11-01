@@ -346,7 +346,7 @@ if mes != 0:
                     tabela['E{}'.format(i)] = '*'
 
         for i in range(len(st.session_state.indisponivel)):
-            tabela['F{}'.format(19+i)] = '{} indisponível entre {} e {} por motivo de {}.'.format(list(st.session_state.indisponivel.keys())[i], list(st.session_state.indisponivel.values())[i][1].strftime('%d/%m'), list(st.session_state.indisponivel.values())[i][-1].strftime('%d/%m'), list(st.session_state.indisponivel.values())[i][0])
+            tabela['F{}'.format(19+i)] = '{} indisponível entre {} e {} por motivo de {}.'.format([_[:-1] for _ in st.session_state.indisponivel][i], list(st.session_state.indisponivel.values())[i][1].strftime('%d/%m'), list(st.session_state.indisponivel.values())[i][-1].strftime('%d/%m'), list(st.session_state.indisponivel.values())[i][0])
         
         for i in range(len(st.session_state.motivos)):
             tabela['F{}'.format(33+i)] = st.session_state.motivos[i]
