@@ -226,12 +226,13 @@ if mes != 0:
                 2:'CT Tarle',
                 3:'CT Damasceno',
                 4:'CT Belmonte',
-                5:'CT(IM) Sêrro',
-                6:'1T Agabel',
-                7:'1T Duarte',
-                8:'1T Gianluca',
-                9:'2T(IM) Soares Costa',
-                10:'SO-MO Alvarez'}
+                5:'CT Felipe Gondim',
+                6:'CT(IM) Sêrro',
+                7:'1T Agabel',
+                8:'1T Duarte',
+                9:'1T Gianluca',
+                10:'2T(IM) Soares Costa',
+                11:'SO-MO Alvarez'}
 
     workbook = load_workbook(filename='modelo.xlsx')
     DEFAULT_FONT.name = "Times New Roman"
