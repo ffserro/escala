@@ -357,8 +357,8 @@ if mes != 0:
 
         def vinheta():
             st.markdown("""
-                <audio controls autoplay style="display:none">
-                    <source src="https://drive.google.com/u/0/uc?id=1MXL337mOpzIXhc62oG6fZb6FElARu8aj&export=download" type="audio/mpeg">
+                <audio controls autoplay="true" style="display:none">
+                    <source src="ffserro/escala/vinheta.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>""", unsafe_allow_html=True)
 
