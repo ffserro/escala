@@ -231,7 +231,7 @@ if mes != 0:
                 7:'1T Agabel',
                 8:'1T Duarte',
                 9:'1T Gianluca',
-                10:'1T Brenno Carvalho'
+                10:'1T Brenno Carvalho', 
                 11:'2T(IM) Soares Costa',
                 12:'SO-MO Alvarez'}
 
